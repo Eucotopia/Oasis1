@@ -1,10 +1,10 @@
-import { title } from "@/components/primitives";
+"use client"
+import { Button } from '@nextui-org/button';
+import AddArticle from '../../components/model/addArticle';
 export default function BlogPage() {
-
 	return (
 		<div>
-			<h1 className={title()}>Blog</h1>
+			<AddArticle />
 		</div>
 	);
 }
-

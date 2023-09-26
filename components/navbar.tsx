@@ -1,31 +1,32 @@
-import { Input } from "@nextui-org/input";
+import {
+	Navbar as NextUINavbar,
+	NavbarContent,
+	NavbarMenu,
+	NavbarMenuToggle,
+	NavbarBrand,
+	NavbarItem,
+	NavbarMenuItem,
+} from "@nextui-org/navbar";
+import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import {
-	NavbarBrand,
-	NavbarContent,
-	NavbarItem,
-	NavbarMenu,
-	NavbarMenuItem,
-	NavbarMenuToggle,
-	Navbar as NextUINavbar,
-} from "@nextui-org/navbar";
+import { Input } from "@nextui-org/input";
 
 import { link as linkStyles } from "@nextui-org/theme";
 
 import { siteConfig } from "@/config/site";
-import clsx from "clsx";
 import NextLink from "next/link";
+import clsx from "clsx";
 
-import {
-	DiscordIcon,
-	GithubIcon,
-	SearchIcon,
-	TwitterIcon
-} from "@/components/icons";
 import { ThemeSwitch } from "@/components/theme-switch";
+import {
+	TwitterIcon,
+	GithubIcon,
+	DiscordIcon,
+	HeartFilledIcon,
+	SearchIcon,
+} from "@/components/icons";
 
-import Login from "@/app/user/Login";
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
@@ -95,7 +96,16 @@ export const Navbar = () => {
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
-					<Login />
+					<Button
+            isExternal
+						as={Link}
+						className="text-sm font-normal text-default-600 bg-default-100"
+						href={siteConfig.links.sponsor}
+						startContent={<HeartFilledIcon className="text-danger" />}
+						variant="flat"
+					>
+						Sponsor
+					</Button>
 				</NavbarItem>
 			</NavbarContent>
 
@@ -117,8 +127,8 @@ export const Navbar = () => {
 									index === 2
 										? "primary"
 										: index === siteConfig.navMenuItems.length - 1
-											? "danger"
-											: "foreground"
+										? "danger"
+										: "foreground"
 								}
 								href="#"
 								size="lg"

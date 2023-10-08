@@ -15,13 +15,13 @@ import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import TextAlign from '@tiptap/extension-text-align'
 import TextStyle from '@tiptap/extension-text-style'
-import { EditorContent, useEditor } from '@tiptap/react'
+import { EditorContent, useEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import css from 'highlight.js/lib/languages/css.js'
-import java from 'highlight.js/lib/languages/java.js'
-import swift from 'highlight.js/lib/languages/swift.js'
-import xml from 'highlight.js/lib/languages/xml.js'
-import { lowlight } from 'lowlight/lib/core.js'
+import css from 'highlight.js/lib/languages/css'
+import java from 'highlight.js/lib/languages/java'
+import swift from 'highlight.js/lib/languages/swift'
+import xml from 'highlight.js/lib/languages/xml'
+import { lowlight } from 'lowlight/lib/core'
 import { useEffect, useState } from 'react'
 import ReactComponent from './Extension'
 import MenuBar from './MenuBar'
@@ -34,7 +34,6 @@ lowlight.registerLanguage('swift', swift)
 import './styles.scss'
 import { faL } from '@fortawesome/free-solid-svg-icons'
 export default (props) => {
-    // const [html, setHtml] = useState('')
     const editor = useEditor({
         extensions: [
             CodeBlockLowlight.configure({

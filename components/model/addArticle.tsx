@@ -19,9 +19,10 @@ export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [content, setContent] = useState('')
 
-    const  handleChildContent = (html: string) => {
+    const handleChildContent = (html: string) => {
         setContent(html)
     }
+
 
     return (
         <div className="flex flex-col gap-2">
@@ -49,7 +50,7 @@ export default function AddArticle() {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button color="primary" onPress={onClose} onClick={()=>{alert(content)}}>
+                                <Button color="primary" onPress={onClose} onClick={() => alert(content)}>
                                     public
                                 </Button>
                             </ModalFooter>

@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/components/model/addArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/model/addArticle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/tiptop/Component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tiptop/Component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/tiptop/Tiptop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tiptop/Tiptop.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +89,7 @@
       <updated>1696673811456</updated>
       <workItem from="1696673814007" duration="1444000" />
       <workItem from="1696676128160" duration="3694000" />
-      <workItem from="1696725638846" duration="1798000" />
+      <workItem from="1696725638846" duration="2487000" />
     </task>
     <servers />
   </component>

@@ -33,9 +33,8 @@ lowlight.registerLanguage('swift', swift)
 
 import './styles.scss'
 import { faL } from '@fortawesome/free-solid-svg-icons'
-export default () => {
-    const [html, setHtml] = useState('<h1>123</h1>')
-
+export default (props) => {
+    // const [html, setHtml] = useState('')
     const editor = useEditor({
         extensions: [
             CodeBlockLowlight.configure({
@@ -88,19 +87,15 @@ export default () => {
                 },
             }),
         ],
-        content: html,
+        content:'',
     })
     useEffect(() => {
         if (!editor) {
             return undefined
         }
-
-        // Get the initial content …
-        setHtml(editor.getHTML())
-
-        // … and get the content after every change.
+        // get the content after every change.
         editor.on('update', () => {
-            setHtml(editor.getHTML())
+            props.onContentChange(editor.getHTML())
         })
 
     }, [editor])

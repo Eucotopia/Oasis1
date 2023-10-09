@@ -1,12 +1,11 @@
 import {SVGProps} from "react";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
-  size?: number;
+    size?: number;
 };
 
-export type Post = {
+export interface User {
     id: number;
-    title: string;
-    body: string;
-    userId: number;
+    username: string;
+    email: string;
 }

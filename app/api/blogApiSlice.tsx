@@ -1,17 +1,19 @@
-import {createApi,fetchBaseQuery} from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+
 export const blogApiSlice = createApi({
-    // 唯一标识
-    reducerPath: "blogApi",
+    reducerPath: 'blogApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://jsonplaceholder.typicode.com",
+        baseUrl: 'http://localhost:8080',
     }),
-    endpoints: (builder) => ({
-        getPosts: builder.query({
-            query: () => "/posts",
+    endpoints: builder => ({
+        // `getStudents` endpoint 是一个返回数据的 “Query” 操作
+        getBlog: builder.query({
+            query: () => '/all/blog',
         }),
-        getPost: builder.query({
-            query: (id) => `/posts/${id}`,
-        }),
+        getBlogById: builder.query({
+            query: (id: number) => `/blog/${id}`
+        })
     }),
 })
-export const {useGetPostsQuery,useGetPostQuery} = blogApiSlice;
+
+export const { useGetBlogQuery,useGetBlogByIdQuery } = blogApiSlice

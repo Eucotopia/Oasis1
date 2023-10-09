@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/blogApiSlice.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/auth/authSlice.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/blogApiSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/blogApiSlice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
@@ -18,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>

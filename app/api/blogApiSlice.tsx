@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
 export const blogApiSlice = createApi({
     reducerPath: 'blogApi',

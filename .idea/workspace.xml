@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/authSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

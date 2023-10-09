@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
-    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="" />
+<<<<<<< HEAD
 =======
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/app/api/auth.ts" afterDir="false" />
@@ -16,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
+>>>>>>> Faker
+=======
+    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="" />
 >>>>>>> Faker
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

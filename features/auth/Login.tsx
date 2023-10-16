@@ -1,36 +1,54 @@
 "use client"
 import {LoginRequest} from "@/types";
-import {useLoginMutation} from "@/app/api/auth";
+import {useLoginMutation} from "@/app/api/authApiSlice";
 import {Input} from "@nextui-org/input";
 import React, {ChangeEvent, useMemo, useState} from "react";
 import {EyeFilledIcon, EyeSlashFilledIcon} from "@nextui-org/shared-icons";
+import {useAppDispatch} from '@/app/hooks/hooks'
 import {Button} from "@nextui-org/button";
+import {setCredentials} from "@/features/auth/authSlice";
 
 export const Login = () => {
-    // const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
+    // 定义用户名和密码
     const [formState, setFormState] = useState<LoginRequest>({
-        username: '',
+        email: '',
         password: '',
     })
     const [login, {isLoading}] = useLoginMutation()
     const [isVisible, setIsVisible] = useState(false);
     const validateEmail = (value: string) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+    // 校验用户名格式
     const isInvalid = useMemo(() => {
-        if (formState.username === "") return false;
-        return !validateEmail(formState.username);
-    }, [formState.username]);
+        if (formState.email === "") return false;
+        return !validateEmail(formState.email);
+    }, [formState.email]);
 
-    const handleChange = ({
-                              target: {name, value},
-                          }: ChangeEvent<HTMLInputElement>) =>
-        setFormState((prev) => ({...prev, [name]: value}))
+    const handleChange = ({target: {name, value}}: ChangeEvent<HTMLInputElement>) => setFormState((prev) => ({
+        ...prev,
+        [name]: value
+    }))
 
+    // 用户登陆
+    const Login = async () => {
+        try {
+            const user = await login(formState).unwrap()
+            dispatch(setCredentials(user))
+        } catch (err) {
+            // toast({
+            //     status: 'error',
+            //     title: 'Error',
+            //     description: 'Oh no, there was an error!',
+            //     isClosable: true,
+            // })
+        }
+    }
     return (
         <>
             <Input
-                value={formState.username}
+                value={formState.email}
                 onChange={handleChange}
-                name="username"
+                name="email"
                 type="email"
                 label="Email"
                 variant="bordered"
@@ -59,17 +77,9 @@ export const Login = () => {
                 className="max-w-xs"
             />
             <Button
-                onClick={async () => {
-                    try {
-                        const user = await login(formState).unwrap()
-                        // dispatch(setCredentials(user))
-                    } catch (err) {
-                    }
-                }}
+                onClick={() => Login()}
                 isLoading={isLoading}
-            >
-                Login
-            </Button>
+            >Login</Button>
         </>
     );
 

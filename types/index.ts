@@ -5,13 +5,13 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export interface User {
-    id: number;
-    username: string;
-    email: string;
+    id: number|null
+    username: string|null
+    email: string|null
+    token: string|null
 }
 
-
 export interface LoginRequest {
-    username: string
+    email: string
     password: string
 }

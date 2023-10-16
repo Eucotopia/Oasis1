@@ -3,27 +3,29 @@ import type {PayloadAction} from '@reduxjs/toolkit'
 import type {User} from '@/types'
 import type {RootState} from '@/app/store'
 
-type AuthState = {
-    user: User | null
-    token: string | null
+const user:User = {
+    token: '',
+    username: '',
+    email: '',
+    id: 0,
 }
 
-const slice = createSlice({
+const LoginSlice = createSlice({
     name: 'auth',
-    initialState: {user: null, token: null} as AuthState,
+    initialState: user,
     reducers: {
-        setCredentials: (
-            state,
-            {payload: {user, token}}: PayloadAction<{ user: User; token: string }>
-        ) => {
-            state.user = user
-            state.token = token
+        setCredentials: (state,action: PayloadAction<User>) => {
+            console.log("执行了")
+            state.token = action.payload.token
+            state.username = action.payload.username
+            state.email = action.payload.email
+            state.id = action.payload.id
         },
     },
 })
 
-export const {setCredentials} = slice.actions
+export const {setCredentials} = LoginSlice.actions
 
-export default slice.reducer
+export default LoginSlice.reducer
 
-export const selectCurrentUser = (state: RootState) => state.auth.user
+export const selectCurrentUser = (state: RootState) => state.auth

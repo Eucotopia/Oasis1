@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/hooks/hooks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hooks/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApiSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/authApiSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/blogApiSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/blogApi.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/docs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/docs/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useAuth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/authSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,8 @@
       <workItem from="1697351946734" duration="8099000" />
       <workItem from="1697387585182" duration="5869000" />
       <workItem from="1697463875403" duration="106000" />
-      <workItem from="1697463989213" duration="3251000" />
+      <workItem from="1697463989213" duration="4036000" />
+      <workItem from="1697545922734" duration="4644000" />
     </task>
     <servers />
   </component>

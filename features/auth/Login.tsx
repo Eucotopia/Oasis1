@@ -1,6 +1,6 @@
 "use client"
 import {LoginRequest} from "@/types";
-import {useLoginMutation} from "@/app/api/authApiSlice";
+import {useLoginMutation} from "@/app/api/authApi";
 import {Input} from "@nextui-org/input";
 import React, {ChangeEvent, useMemo, useState} from "react";
 import {EyeFilledIcon, EyeSlashFilledIcon} from "@nextui-org/shared-icons";
@@ -35,12 +35,6 @@ export const Login = () => {
             const user = await login(formState).unwrap()
             dispatch(setCredentials(user))
         } catch (err) {
-            // toast({
-            //     status: 'error',
-            //     title: 'Error',
-            //     description: 'Oh no, there was an error!',
-            //     isClosable: true,
-            // })
         }
     }
     return (

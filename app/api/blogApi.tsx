@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 import {BaseQueryMeta, BaseQueryResult} from "@reduxjs/toolkit/src/query/baseQueryTypes";
-export const blogApiSlice = createApi({
+export const blogApi = createApi({
     reducerPath: 'blogApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080',
@@ -16,4 +16,4 @@ export const blogApiSlice = createApi({
     }),
 })
 
-export const { useGetBlogQuery,useGetBlogByIdQuery } = blogApiSlice
+export const { useGetBlogQuery,useGetBlogByIdQuery } = blogApi

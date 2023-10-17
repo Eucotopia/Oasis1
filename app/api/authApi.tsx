@@ -1,19 +1,24 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {RootState} from '../store'
 
-export interface User {
+export interface UserV0 {
     id: number
     email: string
     username: string
     token: string
 }
 
-/**
- * 返回的数据格式
- */
+export interface User {
+    id: number
+    email: string
+    username: string
+    password: string
+}
+
+
 export interface UserResponse {
     code: string
-    data: User
+    data: UserV0
     message: string
 }
 
@@ -24,28 +29,31 @@ export interface LoginRequest {
 
 export const authApi = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080/user/',
+        baseUrl: 'http://localhost:8080/user',
         prepareHeaders: (headers, {getState}) => {
             // By default, if we have a token in the store, let's use that for authenticated requests
             const token = (getState() as RootState).auth.user?.token
             if (token) {
-                headers.set('authorization', `Bearer ${token}`)
+                console.log(token)
+                headers.set('Authorization', `Bearer ${token}`)
             }
             return headers
         },
     }),
     endpoints: (builder) => ({
+        // 用户登录
         login: builder.mutation<UserResponse, LoginRequest>({
             query: (credentials) => ({
-                url: 'login',
+                url: '/login',
                 method: 'POST',
                 body: credentials,
             }),
         }),
-        protected: builder.mutation<{ message: string }, void>({
-            query: () => 'protected',
-        }),
+        // 根据 ID 获取用户
+        getUserById: builder.query<User, number>({
+            query: (id) => ({ url: `/${id}`}),
+        })
     }),
 })
 
-export const {useLoginMutation, useProtectedMutation} = authApi
+export const {useLoginMutation,useGetUserByIdQuery} = authApi

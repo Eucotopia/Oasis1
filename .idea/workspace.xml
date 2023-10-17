@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/hooks/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/authApiSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/blogApiSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/blogApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/docs/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/docs/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/authApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/blogApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/blogApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/blog/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/authSlice.tsx" afterDir="false" />
     </list>
@@ -65,22 +62,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/eucotopia/Developer/Blog/Oasis/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/eucotopia/Developer/Blog/Oasis/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/hooks" />
@@ -121,7 +118,7 @@
       <workItem from="1697387585182" duration="5869000" />
       <workItem from="1697463875403" duration="106000" />
       <workItem from="1697463989213" duration="4036000" />
-      <workItem from="1697545922734" duration="4644000" />
+      <workItem from="1697545922734" duration="9318000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 "use client"
 import {LoginRequest} from "@/types";
-import {useLoginMutation} from "@/app/api/authApi";
+import {useGetUserByIdQuery, useLoginMutation} from "@/app/api/authApi";
 import {Input} from "@nextui-org/input";
 import React, {ChangeEvent, useMemo, useState} from "react";
 import {EyeFilledIcon, EyeSlashFilledIcon} from "@nextui-org/shared-icons";
@@ -16,6 +16,7 @@ export const Login = () => {
         password: '',
     })
     const [login, {isLoading}] = useLoginMutation()
+
     const [isVisible, setIsVisible] = useState(false);
     const validateEmail = (value: string) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
     // 校验用户名格式
@@ -74,6 +75,7 @@ export const Login = () => {
                 onClick={() => Login()}
                 isLoading={isLoading}
             >Login</Button>
+            <Button>获取单个用户</Button>
         </>
     );
 

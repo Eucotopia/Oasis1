@@ -1,14 +1,29 @@
 "use client"
 import {LoginRequest} from "@/types";
-import {useGetUserByIdQuery, useLoginMutation} from "@/app/api/authApi";
+import {useGetOkQuery, useLoginMutation} from "@/app/api/authApi";
 import {Input} from "@nextui-org/input";
-import React, {ChangeEvent, useMemo, useState} from "react";
-import {EyeFilledIcon, EyeSlashFilledIcon} from "@nextui-org/shared-icons";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {useAppDispatch} from '@/app/hooks/hooks'
 import {Button} from "@nextui-org/button";
 import {setCredentials} from "@/features/auth/authSlice";
 
+import {
+    Avatar,
+    Checkbox, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger,
+    Link,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    useDisclosure
+} from "@nextui-org/react";
+import {EyeFilledIcon, EyeSlashFilledIcon, MailIcon} from "@nextui-org/shared-icons";
+import {useAuth} from "@/hooks/useAuth";
+import {NavbarContent} from "@nextui-org/navbar";
+
 export const Login = () => {
+    const {user} = useAuth()
     const dispatch = useAppDispatch()
     // 定义用户名和密码
     const [formState, setFormState] = useState<LoginRequest>({
@@ -36,47 +51,128 @@ export const Login = () => {
             const user = await login(formState).unwrap()
             dispatch(setCredentials(user))
         } catch (err) {
+            console.error(err)
+        } finally {
+            setFormState({
+                email: '',
+                password: '',
+            })
         }
     }
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
         <>
-            <Input
-                value={formState.email}
-                onChange={handleChange}
-                name="email"
-                type="email"
-                label="Email"
-                variant="bordered"
-                isInvalid={isInvalid}
-                color={isInvalid ? "danger" : "success"}
-                errorMessage={isInvalid && "Please enter a valid email"}
-                className="max-w-xs"
-            />
-            <Input
-                label="Password"
-                name={"password"}
-                variant="bordered"
-                placeholder="Enter your password"
-                value={formState.password}
-                onChange={handleChange}
-                endContent={
-                    <button className="focus:outline-none" type="button" onClick={() => setIsVisible(!isVisible)}>
-                        {isVisible ? (
-                            <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
-                        ) : (
-                            <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none"/>
-                        )}
-                    </button>
-                }
-                type={isVisible ? "text" : "password"}
-                className="max-w-xs"
-            />
-            <Button
-                onClick={() => Login()}
-                isLoading={isLoading}
-            >Login</Button>
-            <Button>获取单个用户</Button>
+            {user ? (
+                <NavbarContent as="div" justify="end">
+                    <Dropdown placement="bottom-end">
+                        <DropdownTrigger>
+                            <Avatar
+                                isBordered
+                                as="button"
+                                className="transition-transform"
+                                color="secondary"
+                                name="Jason Hughes"
+                                size="sm"
+                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                            />
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Profile Actions" variant="flat">
+                            <DropdownItem key="profile" className="h-14 gap-2">
+                                <p className="font-semibold">Signed in as</p>
+                                <p className="font-semibold">zoey@example.com</p>
+                            </DropdownItem>
+                            <DropdownItem key="settings">My Settings</DropdownItem>
+                            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+                            <DropdownItem key="analytics">Analytics</DropdownItem>
+                            <DropdownItem key="system">System</DropdownItem>
+                            <DropdownItem key="configurations">Configurations</DropdownItem>
+                            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                            <DropdownItem key="logout" color="danger">
+                                Log Out
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                </NavbarContent>
+            ) : (
+                <Button onPress={onOpen} color="primary">Login</Button>
+            )}
+            <Modal
+                isDismissable={false}
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                placement="top-center"
+            >
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+                            <ModalBody>
+                                <Input
+                                    value={formState.email}
+                                    onChange={handleChange}
+                                    name="email"
+                                    isInvalid={isInvalid}
+                                    color={isInvalid ? "danger" : "success"}
+                                    errorMessage={isInvalid && "Please enter a valid email"}
+                                    autoFocus
+                                    endContent={
+                                        <MailIcon
+                                            className="text-2xl text-default-400 pointer-events-none flex-shrink-0"/>
+                                    }
+                                    label="Email"
+                                    placeholder="Enter your email"
+                                    variant="bordered"
+                                />
+                                <Input
+                                    endContent={
+                                        <button className="focus:outline-none" type="button"
+                                                onClick={() => setIsVisible(!isVisible)}>
+                                            {isVisible ? (
+                                                <EyeSlashFilledIcon
+                                                    className="text-2xl text-default-400 pointer-events-none"/>
+                                            ) : (
+                                                <EyeFilledIcon
+                                                    className="text-2xl text-default-400 pointer-events-none"/>
+                                            )}
+                                        </button>
+                                    }
+                                    label="Password"
+                                    placeholder="Enter your password"
+                                    name={"password"}
+                                    value={formState.password}
+                                    onChange={handleChange}
+                                    type={isVisible ? "text" : "password"}
+                                    variant="bordered"
+                                />
+                                <div className="flex py-2 px-1 justify-between">
+                                    <Checkbox
+                                        classNames={{
+                                            label: "text-small",
+                                        }}
+                                    >
+                                        Remember me
+                                    </Checkbox>
+                                    <Link color="primary" href="#" size="sm">
+                                        Forgot password?
+                                    </Link>
+                                </div>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="danger" variant="flat" onPress={onClose}>
+                                    Close
+                                </Button>
+                                <Button
+                                    color="primary"
+                                    onPress={onClose}
+                                    onClick={Login}
+                                >
+                                    Sign in
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
         </>
     );
-
 }

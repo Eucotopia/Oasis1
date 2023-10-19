@@ -34,7 +34,6 @@ export const authApi = createApi({
             // By default, if we have a token in the store, let's use that for authenticated requests
             const token = (getState() as RootState).auth.user?.token
             if (token) {
-                console.log(token)
                 headers.set('Authorization', `Bearer ${token}`)
             }
             return headers
@@ -51,9 +50,12 @@ export const authApi = createApi({
         }),
         // 根据 ID 获取用户
         getUserById: builder.query<User, number>({
-            query: (id) => ({ url: `/${id}`}),
+            query: (id) => ({url: `/${id}`}),
+        }),
+        getOk: builder.query<string,void>({
+            query: () => ({url: '/ok'})
         })
     }),
 })
 
-export const {useLoginMutation,useGetUserByIdQuery} = authApi
+export const {useLoginMutation, useGetUserByIdQuery,useGetOkQuery} = authApi

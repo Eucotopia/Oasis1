@@ -28,6 +28,8 @@ import {
 } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
+import React from "react";
+import {Login} from "@/features/auth/Login";
 
 export const Navbar = () => {
 	const searchInput = (
@@ -106,6 +108,9 @@ export const Navbar = () => {
 					>
 						Sponsor
 					</Button>
+				</NavbarItem>
+				<NavbarItem>
+					<Login/>
 				</NavbarItem>
 			</NavbarContent>
 

@@ -10,15 +10,19 @@ export interface UserV0 {
 
 export interface User {
     id: number
-    email: string
     username: string
     password: string
+    registrationDate: string
+    email: string
+    biography:string
+    profileImage:string
+    roles: string[]
 }
 
 
-export interface UserResponse {
+export interface UserResponse<T> {
     code: string
-    data: UserV0
+    data: T
     message: string
 }
 
@@ -41,7 +45,7 @@ export const authApi = createApi({
     }),
     endpoints: (builder) => ({
         // 用户登录
-        login: builder.mutation<UserResponse, LoginRequest>({
+        login: builder.mutation<UserResponse<UserV0>, LoginRequest>({
             query: (credentials) => ({
                 url: '/login',
                 method: 'POST',
@@ -49,13 +53,13 @@ export const authApi = createApi({
             }),
         }),
         // 根据 ID 获取用户
-        getUserById: builder.query<User, number>({
+        getUserById: builder.query<void, number>({
             query: (id) => ({url: `/${id}`}),
         }),
-        getOk: builder.query<string,void>({
-            query: () => ({url: '/ok'})
+        getUsers: builder.query<UserResponse<User[]>,void>({
+            query: () => ({url: ``}),
         })
     }),
 })
 
-export const {useLoginMutation, useGetUserByIdQuery,useGetOkQuery} = authApi
+export const {useLoginMutation, useGetUserByIdQuery,useGetUsersQuery} = authApi

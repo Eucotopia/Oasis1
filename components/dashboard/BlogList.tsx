@@ -19,7 +19,6 @@ import {
     ChipProps,
     SortDescriptor
 } from "@nextui-org/react";
-import { PlusIcon } from "./PlusIcon";
 import { VerticalDotsIcon } from "./VerticalDotsIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { SearchIcon } from "./SearchIcon";
@@ -71,18 +70,18 @@ export default function BlogList() {
                 Array.from(statusFilter).includes(user.status),
             );
         }
-
         return filteredUsers;
     }, [users, filterValue, statusFilter]);
 
     const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
+
     const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
-
         return filteredItems.slice(start, end);
     }, [page, filteredItems, rowsPerPage]);
+
 
     const sortedItems = React.useMemo(() => {
         return [...items].sort((a: User, b: User) => {

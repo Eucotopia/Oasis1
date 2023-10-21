@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import Tiptop from '@/components/tiptop/Tiptop'
 import {PlusIcon} from "../dashboard/PlusIcon";
 import {
@@ -7,20 +7,40 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    ModalProps,
     Button,
     useDisclosure,
-    RadioGroup,
-    Radio,
     Input
 } from "@nextui-org/react";
+import {Blog, useAddBlogMutation} from "@/app/api/blogApi";
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    const [content, setContent] = useState('')
 
     const handleChildContent = (html: string) => {
-        setContent(html)
+        setBlogState((pre) => ({
+            ...pre,
+            content: html
+        }))
+    }
+
+    const handleChange = ({target: {name, value}}: ChangeEvent<HTMLInputElement>) => setBlogState((prev) => ({
+        ...prev,
+        [name]: value
+    }))
+
+    const [addBlog, isLoading] = useAddBlogMutation()
+
+    const [blogState, setBlogState] = useState<Blog>({
+            title: '',
+            content: '',
+            coverImage: "66666666",
+            summary: ""
+        }
+    )
+
+    const add = async () => {
+        const blog = await addBlog(blogState).unwrap()
+        console.log(blog)
     }
 
 
@@ -40,8 +60,22 @@ export default function AddArticle() {
                     {(onClose: any) => (
                         <>
                             <ModalHeader className="flex flex-row gap-1">
-                                <Input type="email" variant={"underlined"} placeholder="Enter Title"/>
-                                <Input type="email" variant={"underlined"} placeholder="Enter Title"/>
+                                <Input
+                                    type="text"
+                                    variant={"underlined"}
+                                    placeholder="Enter Title"
+                                    name="title"
+                                    value={blogState.title}
+                                    onChange={handleChange}
+                                />
+                                <Input
+                                    type="text"
+                                    variant={"underlined"}
+                                    placeholder="Enter summary"
+                                    name="summary"
+                                    value={blogState.summary}
+                                    onChange={handleChange}
+                                />
                             </ModalHeader>
                             <ModalBody>
                                 <Tiptop onContentChange={handleChildContent}/>
@@ -50,7 +84,7 @@ export default function AddArticle() {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button color="primary" onPress={onClose} onClick={() => alert(content)}>
+                                <Button color="primary" onPress={onClose} onClick={() => add()}>
                                     public
                                 </Button>
                             </ModalFooter>

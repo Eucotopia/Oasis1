@@ -101,9 +101,7 @@ export default (props) => {
     return (
         <>
             <div className="editor">
-                {editor &&
-                    <MenuBar editor={editor}
-                    />}
+                {editor && <MenuBar editor={editor}/>}
                 <EditorContent className="editor__content" editor={editor} />
             </div>
 

@@ -1,6 +1,6 @@
 "use client"
 import {LoginRequest} from "@/types";
-import {useGetOkQuery, useLoginMutation} from "@/app/api/authApi";
+import {useLoginMutation} from "@/app/api/authApi";
 import {Input} from "@nextui-org/input";
 import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {useAppDispatch} from '@/app/hooks/hooks'

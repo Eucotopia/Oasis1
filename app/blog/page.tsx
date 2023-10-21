@@ -1,11 +1,11 @@
 "use client"
-import { Button } from '@nextui-org/button';
-import AddArticle from '../../components/model/addArticle';
-import {useGetBlogByIdQuery, useGetBlogQuery} from "@/app/api/blogApi";
 export default function BlogPage() {
-	return (
-		<div>
-			<AddArticle />
-		</div>
-	);
+    return (
+        <>
+            <div className='flex-row '>
+                <div>123</div>
+                <div>123</div>
+            </div>
+        </>
+    );
 }

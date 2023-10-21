@@ -38,10 +38,15 @@ type User = typeof users[0];
 
 export default function BlogList() {
     const [filterValue, setFilterValue] = React.useState("");
+
     const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set([]));
+
     const [visibleColumns, setVisibleColumns] = React.useState<Selection>(new Set(INITIAL_VISIBLE_COLUMNS));
+
     const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
+
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
     const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
         column: "age",
         direction: "ascending",
@@ -53,7 +58,6 @@ export default function BlogList() {
 
     const headerColumns = React.useMemo(() => {
         if (visibleColumns === "all") return columns;
-
         return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
     }, [visibleColumns]);
 
@@ -65,12 +69,14 @@ export default function BlogList() {
                 user.name.toLowerCase().includes(filterValue.toLowerCase()),
             );
         }
+
         if (statusFilter !== "all" && Array.from(statusFilter).length !== statusOptions.length) {
             filteredUsers = filteredUsers.filter((user) =>
                 Array.from(statusFilter).includes(user.status),
             );
         }
         return filteredUsers;
+
     }, [users, filterValue, statusFilter]);
 
     const pages = Math.ceil(filteredItems.length / rowsPerPage);

@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {RootState} from '../store'
-
+import {ResultResponse} from '@/types'
 export interface UserV0 {
     id: number
     email: string
@@ -19,12 +19,6 @@ export interface User {
     roles: string[]
 }
 
-
-export interface UserResponse<T> {
-    code: string
-    data: T
-    message: string
-}
 
 export interface LoginRequest {
     email: string
@@ -45,7 +39,7 @@ export const authApi = createApi({
     }),
     endpoints: (builder) => ({
         // 用户登录
-        login: builder.mutation<UserResponse<UserV0>, LoginRequest>({
+        login: builder.mutation<ResultResponse<UserV0>, LoginRequest>({
             query: (credentials) => ({
                 url: '/login',
                 method: 'POST',
@@ -56,7 +50,7 @@ export const authApi = createApi({
         getUserById: builder.query<void, number>({
             query: (id) => ({url: `/${id}`}),
         }),
-        getUsers: builder.query<UserResponse<User[]>,void>({
+        getUsers: builder.query<ResultResponse<User[]>,void>({
             query: () => ({url: ``}),
         })
     }),

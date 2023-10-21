@@ -1,15 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {blogApi} from "@/app/api/blogApi";
+import {postApi} from "@/app/api/postApi";
 import authReducer from '@/features/auth/authSlice'
-import { authApi } from "@/app/api/authApi";
-
+import {authApi} from "@/app/api/authApi";
+// 导入持久化插件
 export const store = configureStore({
     reducer: {
-        [blogApi.reducerPath]: blogApi.reducer,
+        [postApi.reducerPath]: postApi.reducer,
         [authApi.reducerPath]: authApi.reducer,
         auth: authReducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(blogApi.middleware,authApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(postApi.middleware, authApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

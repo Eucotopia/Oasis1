@@ -1,7 +1,6 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react'
-import {UserResponse} from "@/app/api/authApi";
+import {ResultResponse,Post} from "@/types";
 import {RootState} from "@/app/store";
-
 export interface Blog {
     title:string,
     content:string,
@@ -9,13 +8,14 @@ export interface Blog {
     coverImage:string
 }
 
-export const blogApi = createApi({
-    reducerPath: 'blogApi',
+export const postApi = createApi({
+    reducerPath: 'postApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080',
         prepareHeaders: (headers, {getState}) => {
             // By default, if we have a token in the store, let's use that for authenticated requests
             const token = (getState() as RootState).auth.user?.token
+            console.log(token)
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`)
             }
@@ -23,13 +23,13 @@ export const blogApi = createApi({
         },
     }),
     endpoints: builder => ({
-        getBlog: builder.query({
-            query: () => '/user/ok',
+        getBlog: builder.query<ResultResponse<Post[]>,void>({
+            query: () => '/post',
         }),
-        getBlogById: builder.query({
-            query: (id: number) => `/blog/${id}`
+        getBlogById: builder.query<ResultResponse<Post>,number>({
+            query: (id: number) => `/post/${id}`
         }),
-        addBlog: builder.mutation<UserResponse<string>, Blog>({
+        addBlog: builder.mutation<ResultResponse<string>, Blog>({
             query: (blog) => ({
                 url: '/blog',
                 method: 'POST',
@@ -39,4 +39,4 @@ export const blogApi = createApi({
     }),
 })
 
-export const {useGetBlogQuery, useGetBlogByIdQuery,useAddBlogMutation} = blogApi
+export const {useGetBlogQuery, useGetBlogByIdQuery,useAddBlogMutation} = postApi

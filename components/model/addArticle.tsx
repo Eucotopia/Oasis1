@@ -11,7 +11,7 @@ import {
     useDisclosure,
     Input
 } from "@nextui-org/react";
-import {Blog, useAddBlogMutation} from "@/app/api/blogApi";
+import {Blog, useAddBlogMutation} from "@/app/api/postApi";
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();

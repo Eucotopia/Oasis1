@@ -1,7 +1,9 @@
 "use client"
 import BlogList from '@/components/dashboard/BlogList'
-import {useGetUserByIdQuery} from "@/app/api/authApi";
+import {useGetBlogQuery} from "@/app/api/postApi";
+
 export default function DashboardPage() {
+
     return (
         <div>
             <BlogList />

@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/icon/LockIcon.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/icon/MainIcon.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/page.tsx" afterDir="false" />
+    <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="添加新增博客">
+      <change afterPath="$PROJECT_DIR$/app/post/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/post/PostDetail.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/authApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/blogApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/postApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/blog/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/model/addArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/model/addArticle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/site.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -119,8 +126,17 @@
       <workItem from="1697387585182" duration="5869000" />
       <workItem from="1697463875403" duration="106000" />
       <workItem from="1697463989213" duration="4036000" />
-      <workItem from="1697545922734" duration="14644000" />
+      <workItem from="1697545922734" duration="34715000" />
     </task>
+    <task id="LOCAL-00001" summary="添加新增博客">
+      <option name="closed" value="true" />
+      <created>1697863261395</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697863261395</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,5 +179,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加新增博客" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加新增博客" />
   </component>
 </project>

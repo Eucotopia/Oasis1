@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc10edc5-f892-44f3-a71d-607cf796a71d" name="Changes" comment="添加新增博客">
-      <change afterPath="$PROJECT_DIR$/app/post/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/post/PostDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/authApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/authApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/blogApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/postApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/blog/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/blog/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/postApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/postApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/post/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/post/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/model/addArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/model/addArticle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/site.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/site.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tiptop/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/tiptop/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/auth/authSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/auth/authSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/post/PostDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/features/post/PostDetail.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,22 +69,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/eucotopia/Developer/Blog/Oasis/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/eucotopia/Developer/Blog/Oasis/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/hooks" />
@@ -127,6 +126,9 @@
       <workItem from="1697463875403" duration="106000" />
       <workItem from="1697463989213" duration="4036000" />
       <workItem from="1697545922734" duration="34715000" />
+      <workItem from="1698413605899" duration="1225000" />
+      <workItem from="1698425436095" duration="171000" />
+      <workItem from="1698425615010" duration="15054000" />
     </task>
     <task id="LOCAL-00001" summary="添加新增博客">
       <option name="closed" value="true" />

@@ -11,7 +11,8 @@ import {
     useDisclosure,
     Input
 } from "@nextui-org/react";
-import {Blog, useAddBlogMutation} from "@/app/api/postApi";
+import {useAddBlogMutation} from "@/app/api/postApi";
+import {Post} from "@/types";
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -30,11 +31,17 @@ export default function AddArticle() {
 
     const [addBlog, isLoading] = useAddBlogMutation()
 
-    const [blogState, setBlogState] = useState<Blog>({
-            title: '',
-            content: '',
-            coverImage: "66666666",
-            summary: ""
+    const [blogState, setBlogState] = useState<Post>({
+            id: 3,
+            title: "",
+            content: "",
+            summary: "",
+            createTime: "2023-10-28 10:52:50",
+            isTop: 1,
+            userId: 1,
+            likes: 1,
+            views: 1,
+            comments: 1
         }
     )
 

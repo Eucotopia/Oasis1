@@ -1,9 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {RootState} from '../store'
 import {ResultResponse} from '@/types'
+import {LoginRequest} from "@/types";
+
 export interface UserV0 {
     id: number
-    email: string
+    nickname: string
     username: string
     token: string
 }
@@ -14,16 +16,11 @@ export interface User {
     password: string
     registrationDate: string
     email: string
-    biography:string
-    profileImage:string
+    biography: string
+    profileImage: string
     roles: string[]
 }
 
-
-export interface LoginRequest {
-    email: string
-    password: string
-}
 
 export const authApi = createApi({
     baseQuery: fetchBaseQuery({
@@ -50,10 +47,10 @@ export const authApi = createApi({
         getUserById: builder.query<void, number>({
             query: (id) => ({url: `/${id}`}),
         }),
-        getUsers: builder.query<ResultResponse<User[]>,void>({
+        getUsers: builder.query<ResultResponse<User[]>, void>({
             query: () => ({url: ``}),
         })
     }),
 })
 
-export const {useLoginMutation, useGetUserByIdQuery,useGetUsersQuery} = authApi
+export const {useLoginMutation, useGetUserByIdQuery, useGetUsersQuery} = authApi

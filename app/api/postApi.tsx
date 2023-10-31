@@ -1,11 +1,11 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react'
 import {ResultResponse,Post} from "@/types";
 import {RootState} from "@/app/store";
-export interface Blog {
-    title:string,
-    content:string,
-    summary:string,
-    coverImage:string
+
+
+export interface Page {
+    page:number,
+    size:number
 }
 
 export const postApi = createApi({
@@ -23,17 +23,17 @@ export const postApi = createApi({
         },
     }),
     endpoints: builder => ({
-        getBlog: builder.query<ResultResponse<Post[]>,void>({
-            query: () => '/post',
+        getBlog: builder.query<ResultResponse<Post[]>,Page>({
+            query: (page:Page) => `/post/${page.page}/${page.size}`,
         }),
         getBlogById: builder.query<ResultResponse<Post>,number>({
             query: (id: number) => `/post/${id}`
         }),
-        addBlog: builder.mutation<ResultResponse<string>, Blog>({
-            query: (blog) => ({
-                url: '/blog',
+        addBlog: builder.mutation<ResultResponse<string>, Post>({
+            query: (post) => ({
+                url: '/post',
                 method: 'POST',
-                body: blog,
+                body: post,
             })
         }),
     }),

@@ -21,13 +21,14 @@ import {
 import {EyeFilledIcon, EyeSlashFilledIcon, MailIcon} from "@nextui-org/shared-icons";
 import {useAuth} from "@/hooks/useAuth";
 import {NavbarContent} from "@nextui-org/navbar";
+import {NULL} from "sass";
 
 export const Login = () => {
     const {user} = useAuth()
     const dispatch = useAppDispatch()
     // 定义用户名和密码
     const [formState, setFormState] = useState<LoginRequest>({
-        email: '',
+        username: '',
         password: '',
     })
     const [login, {isLoading}] = useLoginMutation()
@@ -36,9 +37,9 @@ export const Login = () => {
     const validateEmail = (value: string) => value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
     // 校验用户名格式
     const isInvalid = useMemo(() => {
-        if (formState.email === "") return false;
-        return !validateEmail(formState.email);
-    }, [formState.email]);
+        if (formState.username === "") return false;
+        return !validateEmail(formState.username);
+    }, [formState.username]);
 
     const handleChange = ({target: {name, value}}: ChangeEvent<HTMLInputElement>) => setFormState((prev) => ({
         ...prev,
@@ -54,7 +55,7 @@ export const Login = () => {
             console.error(err)
         } finally {
             setFormState({
-                email: '',
+                username: '',
                 password: '',
             })
         }
@@ -79,7 +80,7 @@ export const Login = () => {
                         <DropdownMenu aria-label="Profile Actions" variant="flat">
                             <DropdownItem key="profile" className="h-14 gap-2">
                                 <p className="font-semibold">Signed in as</p>
-                                <p className="font-semibold">zoey@example.com</p>
+                                <p className="font-semibold">{user.nickname}</p>
                             </DropdownItem>
                             <DropdownItem key="settings">My Settings</DropdownItem>
                             <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -87,7 +88,7 @@ export const Login = () => {
                             <DropdownItem key="system">System</DropdownItem>
                             <DropdownItem key="configurations">Configurations</DropdownItem>
                             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-                            <DropdownItem key="logout" color="danger">
+                            <DropdownItem key="logout" color="danger" onClick={()=>alert("logout")}>
                                 Log Out
                             </DropdownItem>
                         </DropdownMenu>
@@ -108,9 +109,9 @@ export const Login = () => {
                             <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
                             <ModalBody>
                                 <Input
-                                    value={formState.email}
+                                    value={formState.username}
                                     onChange={handleChange}
-                                    name="email"
+                                    name="username"
                                     isInvalid={isInvalid}
                                     color={isInvalid ? "danger" : "success"}
                                     errorMessage={isInvalid && "Please enter a valid email"}

@@ -12,15 +12,22 @@ export interface User {
 }
 
 export interface LoginRequest {
-    email: string
+    username: string
     password: string
 }
+
 // 博客类型
 export type Post = {
     id: number,
     title: string,
     content: string,
-    isPublished:number
+    summary: string,
+    createTime: string,
+    isTop: number,
+    userId: number,
+    likes:number,
+    views:number,
+    comments:number
 }
 
 

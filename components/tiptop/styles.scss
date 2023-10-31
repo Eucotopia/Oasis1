@@ -2,16 +2,19 @@
   > * + * {
     margin-top: 0.75em;
   }
+
   a {
     color: #68cef8;
   }
-    .is-empty::before {
+
+  .is-empty::before {
     content: attr(data-placeholder);
     float: left;
     color: #adb5bd;
     pointer-events: none;
     height: 0;
   }
+
   .details {
     display: flex;
     margin: 1rem 0;
@@ -48,37 +51,42 @@
       margin-bottom: 0;
     }
   }
+
   ul,
   ol {
     padding: 0 1rem;
+    background-color: red;
   }
 
-  h1{
-     font-size: 2em;
+  h1 {
+    font-size: 2em;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
   }
-  h2{
-      font-size: 1.5em;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  }
-  h3{
-      font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
+
+  h2 {
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: green;
   }
 
-    [data-type="emoji"] {
+  h3 {
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+  [data-type="emoji"] {
     img {
       width: 1em;
       height: 1em;
@@ -100,7 +108,7 @@
     color: #fff;
     font-family: "JetBrainsMono", monospace;
     padding: 0.75rem 1rem;
-    
+
     code {
       background: none;
       color: inherit;
@@ -290,6 +298,7 @@
   height: 0;
   pointer-events: none;
 }
+
 .table-of-content {
   position: fixed;
   top: 20rem;

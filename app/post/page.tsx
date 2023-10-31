@@ -2,8 +2,6 @@
 import {useGetBlogQuery} from "@/app/api/postApi";
 import {Spinner} from "@nextui-org/react";
 import {Page} from '@/app/api/postApi'
-import {Editor, EditorContent, useEditor} from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 import "@/components/tiptop/styles.scss"
 import {lowlight} from "lowlight/lib/core";
 import css from 'highlight.js/lib/languages/css'
@@ -11,7 +9,10 @@ import java from 'highlight.js/lib/languages/java'
 import swift from 'highlight.js/lib/languages/swift'
 import xml from 'highlight.js/lib/languages/xml'
 import "@/components/tiptop/styles.scss"
-import {PostDetail} from "@/features/post/PostDetail";
+import React from "react";
+import NextLink from "next/link";
+import clsx from "clsx";
+
 lowlight.registerLanguage('xml', xml)
 lowlight.registerLanguage('java', java)
 lowlight.registerLanguage('css', css)
@@ -28,16 +29,20 @@ export default function PostPage() {
     if (isLoading) {
         return <Spinner/>
     }
-    console.log(posts?.data[2].content)
 
     return (
         <>
-            {/*<div className={isFetching ? 'posts--disabled' : ''}>*/}
-            {/*    {posts?.data.map((post) => (*/}
-            {/*        post.title*/}
-            {/*    ))}*/}
-            {/*</div>*/}
-            <PostDetail id={3}/>
+            <div className={isFetching ? 'posts--disabled' : ''}>
+                {posts?.data.map((post) => (
+                    post.title
+                ))}
+            </div>
+            <NextLink
+                color="foreground"
+                href="/post/4"
+            >
+                跳转
+            </NextLink>
         </>
     );
 }

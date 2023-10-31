@@ -32,9 +32,9 @@ export default function AddArticle() {
     const [addBlog, isLoading] = useAddBlogMutation()
 
     const [blogState, setBlogState] = useState<Post>({
-            id: 3,
+            id: 7,
             title: "",
-            content: "",
+            content: "这是一个博客内容",
             summary: "",
             createTime: "2023-10-28 10:52:50",
             isTop: 1,
@@ -85,7 +85,7 @@ export default function AddArticle() {
                                 />
                             </ModalHeader>
                             <ModalBody>
-                                <Tiptop onContentChange={handleChildContent}/>
+                                <Tiptop onContentChange={handleChildContent} isEditable={true} content={blogState.content}/>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="light" onPress={onClose}>

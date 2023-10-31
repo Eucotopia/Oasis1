@@ -1,9 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Fragment } from "react"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {Fragment} from "react"
 import './MenuBar.scss'
 import MenuItem from './MenuItem'
 import './MenuItem.scss'
-export default ({ editor }) => {
+
+export default ({editor}) => {
     const items = [
         {
             icon: 'fa-solid fa-code',
@@ -33,19 +34,19 @@ export default ({ editor }) => {
             icon: 'fa-solid fa-align-left',
             title: 'align-left',
             action: () => editor.chain().focus().setTextAlign('left').run(),
-            isActive: () => editor.isActive({ textAlign: 'left' })
+            isActive: () => editor.isActive({textAlign: 'left'})
         },
         {
             icon: 'fa-solid fa-align-center',
             title: 'align-center',
             action: () => editor.chain().focus().setTextAlign('center').run(),
-            isActive: () => editor.isActive({ textAlign: 'center' })
+            isActive: () => editor.isActive({textAlign: 'center'})
         },
         {
             icon: 'fa-solid fa-align-right',
             title: 'align-right',
             action: () => editor.chain().focus().setTextAlign('right').run(),
-            isActive: () => editor.isActive({ textAlign: 'right' })
+            isActive: () => editor.isActive({textAlign: 'right'})
         },
         {
             type: 'divider',
@@ -138,32 +139,32 @@ export default ({ editor }) => {
         },
         {
             type: 'divider',
-        },
+        }
     ]
     return (
         <div className="editor__header">
             {
                 items.map((item, index) => (
                     <Fragment key={index}>
-                        {item.type === 'divider' ? <div className="divider" /> : <MenuItem {...item} />}
+                        {item.type === 'divider' ? <div className="divider"/> : <MenuItem {...item} />}
                     </Fragment>
                 ))
             }
             <button
                 title='backgroundColor'
-                className={`menu-item ${editor.isActive('highlight', { color: editor.getAttributes('highlight').color }) ? 'is-active' : ''}`}
+                className={`menu-item ${editor.isActive('highlight', {color: editor.getAttributes('highlight').color}) ? 'is-active' : ''}`}
                 onClick={() => {
                     const color = prompt('Please enter a background color:');
                     if (color) {
-                        editor.chain().focus().toggleHighlight({ color }).run();
+                        editor.chain().focus().toggleHighlight({color}).run();
                     }
                 }}
             >
-                <FontAwesomeIcon icon="fa-solid fa-highlighter" />
+                <FontAwesomeIcon icon="fa-solid fa-highlighter"/>
             </button>
             <button
                 title='textcolor'
-                className={`menu-item ${editor.isActive('textStyle', { color: editor.getAttributes('textStyle').color }) ? 'is-active' : ''}`}
+                className={`menu-item ${editor.isActive('textStyle', {color: editor.getAttributes('textStyle').color}) ? 'is-active' : ''}`}
                 onClick={() => {
                     const color = prompt('Please enter a text color:');
                     if (color) {
@@ -171,8 +172,70 @@ export default ({ editor }) => {
                     }
                 }}
             >
-                <FontAwesomeIcon icon=" fa-solid fa-fill-drip" />
+                <FontAwesomeIcon icon=" fa-solid fa-fill-drip"/>
             </button>
-        </div >
+            <button
+                title='image'
+                className={`menu-item ${editor.isActive('image', {src: editor.getAttributes('image').src}) ? 'is-active' : ''}`}
+                onClick={() => {
+                    const url = window.prompt('URL')
+                    if (url) {
+                        editor.chain().focus().setImage({src: url}).run()
+                    }
+                }
+                }
+            >
+                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+            </button>
+            <button
+                title='youtube'
+                className={`menu-item ${editor.isActive('youtube', {src: editor.getAttributes('youtube').src}) ? 'is-active' : ''}`}
+                onClick={() => {
+                    const url = prompt('Enter YouTube URL')
+                    if (url) {
+                        editor.commands.setYoutubeVideo({
+                            src: url,
+                            width: Math.max(320, parseInt("640", 10)) || 640,
+                            height: Math.max(180, parseInt("480", 10)) || 480,
+                        })
+                    }
+                }
+                }
+            >
+                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+            </button>
+
+            <button
+                title='link'
+                className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
+                onClick={() => {
+                    const previousUrl = editor.getAttributes('link').href
+                    const url = window.prompt('URL', previousUrl)
+                    // cancelled
+                    if (url === null) {
+                        return
+                    }
+                    // empty
+                    if (url === '') {
+                        editor.chain().focus().extendMarkRange('link').unsetLink()
+                            .run()
+                        return
+                    }
+                    // update link
+                    editor.chain().focus().extendMarkRange('link').setLink({href: url})
+                        .run()
+                }
+                }
+            >
+                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+            </button>
+            <button
+                className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
+                onClick={() => editor.chain().focus().unsetLink().run()}
+                disabled={!editor.isActive('link')}
+            >
+                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+            </button>
+        </div>
     )
 }

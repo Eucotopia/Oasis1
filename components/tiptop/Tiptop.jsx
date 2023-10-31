@@ -1,52 +1,56 @@
-import Details from '@tiptap-pro/extension-details'
-import DetailsContent from '@tiptap-pro/extension-details-content'
-import DetailsSummary from '@tiptap-pro/extension-details-summary'
-import Emoji, { gitHubEmojis } from '@tiptap-pro/extension-emoji'
+'use client'
+import Emoji, {gitHubEmojis} from '@tiptap-pro/extension-emoji'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
-import { Color } from '@tiptap/extension-color'
+import {Color} from '@tiptap/extension-color'
 import FontFamily from '@tiptap/extension-font-family'
 import Heading from '@tiptap/extension-heading'
 import Highlight from '@tiptap/extension-highlight'
+import 'katex/dist/katex.min.css'
 import Link from '@tiptap/extension-link'
-import Placeholder from '@tiptap/extension-placeholder'
+import Table from '@tiptap/extension-table'
+import Youtube from '@tiptap/extension-youtube'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+import Image from '@tiptap/extension-image'
 import Subscript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import TextAlign from '@tiptap/extension-text-align'
 import TextStyle from '@tiptap/extension-text-style'
-import { EditorContent, useEditor} from '@tiptap/react'
+import {EditorContent, useEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import css from 'highlight.js/lib/languages/css'
 import java from 'highlight.js/lib/languages/java'
 import swift from 'highlight.js/lib/languages/swift'
 import xml from 'highlight.js/lib/languages/xml'
-import { lowlight } from 'lowlight/lib/core'
-import { useEffect, useState } from 'react'
+import {lowlight} from 'lowlight/lib/core'
+import {useEffect} from 'react'
 import ReactComponent from './Extension'
 import MenuBar from './MenuBar'
-import suggestion from './suggestion'
+import {Mention} from "@tiptap/extension-mention";
+import MentionSuggestion from "@/components/tiptop/MentionSuggestion";
+
 lowlight.registerLanguage('xml', xml)
 lowlight.registerLanguage('java', java)
 lowlight.registerLanguage('css', css)
 lowlight.registerLanguage('swift', swift)
 
 import './styles.scss'
-import { faL } from '@fortawesome/free-solid-svg-icons'
+import EmojiSuggestion from "./EmojiSuggestion";
+import {Dropcursor} from "@tiptap/extension-dropcursor";
+import {FileHandler} from "@tiptap-pro/extension-file-handler";
+import {Mathematics} from "@tiptap-pro/extension-mathematics";
+import {Typography} from "@tiptap/extension-typography";
+
 export default (props) => {
+
     const editor = useEditor({
         extensions: [
             CodeBlockLowlight.configure({
                 lowlight,
             }),
-            Details.configure({
-                persist: true,
-                HTMLAttributes: {
-                    class: 'details',
-                },
-            }),
-            DetailsSummary,
-            DetailsContent,
             Heading.configure({
                 levels: [1, 2, 3],
             }),
@@ -56,12 +60,13 @@ export default (props) => {
             Emoji.configure({
                 emojis: gitHubEmojis,
                 enableEmoticons: true,
-                suggestion,
+                suggestion: EmojiSuggestion,
+                forceFallbackImages: true,
             }),
             Link.configure({
                 openOnClick: true,
             }),
-            Highlight.configure({ multicolor: true }),
+            Highlight.configure({multicolor: true}),
             Subscript,
             TextStyle,
             Color,
@@ -70,23 +75,84 @@ export default (props) => {
             Highlight,
             TaskList,
             FontFamily,
-            TaskItem,
+            Image,
+            Dropcursor,
+            //TODO 待完成
+            Table.configure({
+                resizable: true,
+            }),
+            Link.configure({
+                openOnClick: false,
+            }),
+            TableRow,
+            TableHeader,
+            TableCell,
+            Youtube.configure({
+                controls: false,
+            }),
+            Mention.configure({
+                HTMLAttributes: {
+                    class: 'mention',
+                },
+                suggestion: MentionSuggestion,
+            }),
+            History,
+            Mathematics,
             ReactComponent,
             TextAlign.configure({
                 types: ['heading', 'paragraph'],
             }),
-            Placeholder.configure({
-                includeChildren: true,
-                placeholder: ({ node }) => {
-                    if (node.type.name === 'detailsSummary') {
-                        return 'Summary'
-                    }
+            Typography,
 
-                    return null
+            //TODO 文件的复制粘贴
+            FileHandler.configure({
+                allowedMimeTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/webp'],
+                onDrop: (currentEditor, files, pos) => {
+                    files.forEach(file => {
+                        const fileReader = new FileReader()
+
+                        fileReader.readAsDataURL(file)
+                        fileReader.onload = () => {
+                            currentEditor.chain().insertContentAt(pos, {
+                                type: 'image',
+                                attrs: {
+                                    src: fileReader.result,
+                                },
+                            }).focus().run()
+                        }
+                    })
+                },
+                onPaste: (currentEditor, files, htmlContent) => {
+                    files.forEach(file => {
+                        if (htmlContent) {
+                            // if there is htmlContent, stop manual insertion & let other extensions handle insertion via inputRule
+                            // you could extract the pasted file from this url string and upload it to a server for example
+                            console.log(htmlContent) // eslint-disable-line no-console
+                            return false
+                        }
+
+                        const fileReader = new FileReader()
+
+                        fileReader.readAsDataURL(file)
+                        fileReader.onload = () => {
+                            currentEditor.chain().insertContentAt(currentEditor.state.selection.anchor, {
+                                type: 'image',
+                                attrs: {
+                                    src: fileReader.result,
+                                },
+                            }).focus().run()
+                        }
+                    })
                 },
             }),
         ],
-        content:'',
+        editable: props.isEditable,
+        content: props.content,
+        editorProps: {
+            attributes: {
+                spellcheck: 'false',
+            },
+        },
     })
     useEffect(() => {
         if (!editor) {
@@ -96,13 +162,24 @@ export default (props) => {
         editor.on('update', () => {
             props.onContentChange(editor.getHTML())
         })
-
     }, [editor])
+
+    if (props.isEditable === false){
+        return (
+            <>
+                <div>
+                    <EditorContent className="editor__content" editor={editor}/>
+                </div>
+
+            </>
+        )
+    }
     return (
         <>
             <div className="editor">
+                {/*{editor && <Bubble editor={editor}/>}*/}
                 {editor && <MenuBar editor={editor}/>}
-                <EditorContent className="editor__content" editor={editor} />
+                <EditorContent className="editor__content" editor={editor}/>
             </div>
 
         </>

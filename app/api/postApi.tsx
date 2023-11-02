@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react'
-import {ResultResponse,Post} from "@/types";
+import {ResultResponse, Post, PostDTO} from "@/types";
 import {RootState} from "@/app/store";
 
 
@@ -29,7 +29,7 @@ export const postApi = createApi({
         getBlogById: builder.query<ResultResponse<Post>,number>({
             query: (id: number) => `/post/${id}`
         }),
-        addBlog: builder.mutation<ResultResponse<string>, Post>({
+        addBlog: builder.mutation<ResultResponse<string>, PostDTO>({
             query: (post) => ({
                 url: '/post',
                 method: 'POST',

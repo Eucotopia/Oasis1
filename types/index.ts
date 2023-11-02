@@ -1,4 +1,5 @@
 import {SVGProps} from "react";
+import exp from "constants";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
     size?: number;
@@ -25,11 +26,16 @@ export type Post = {
     createTime: string,
     isTop: number,
     userId: number,
-    likes:number,
-    views:number,
-    comments:number
+    likes: number,
+    views: number,
+    comments: number
 }
-
+export type PostDTO = {
+    title: string,
+    content: string,
+    summary: string,
+    isTop: number,
+}
 
 export interface ResultResponse<T> {
     code: string

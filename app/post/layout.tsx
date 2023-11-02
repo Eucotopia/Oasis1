@@ -6,7 +6,9 @@ export default function BlogLayout({
     return (
 
         <>
-            {children}
+            <div>
+                {children}
+            </div>
         </>
     );
 }

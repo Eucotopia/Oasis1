@@ -12,7 +12,8 @@ import {
     Input
 } from "@nextui-org/react";
 import {useAddBlogMutation} from "@/app/api/postApi";
-import {Post} from "@/types";
+import {Post, PostDTO} from "@/types";
+
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
@@ -31,17 +32,11 @@ export default function AddArticle() {
 
     const [addBlog, isLoading] = useAddBlogMutation()
 
-    const [blogState, setBlogState] = useState<Post>({
-            id: 7,
+    const [blogState, setBlogState] = useState<PostDTO>({
             title: "",
             content: "这是一个博客内容",
             summary: "",
-            createTime: "2023-10-28 10:52:50",
             isTop: 1,
-            userId: 1,
-            likes: 1,
-            views: 1,
-            comments: 1
         }
     )
 
@@ -52,53 +47,56 @@ export default function AddArticle() {
 
 
     return (
-        <div className="flex flex-col gap-2">
-            <Button color="primary" endContent={<PlusIcon/>} onPress={onOpen}>
-                Add New
-            </Button>
-            <Modal
-                size="5xl"
-                isOpen={isOpen}
-                onOpenChange={onOpenChange}
-                scrollBehavior={"inside"}
-                backdrop="blur"
-            >
-                <ModalContent>
-                    {(onClose: any) => (
-                        <>
-                            <ModalHeader className="flex flex-row gap-1">
-                                <Input
-                                    type="text"
-                                    variant={"underlined"}
-                                    placeholder="Enter Title"
-                                    name="title"
-                                    value={blogState.title}
-                                    onChange={handleChange}
-                                />
-                                <Input
-                                    type="text"
-                                    variant={"underlined"}
-                                    placeholder="Enter summary"
-                                    name="summary"
-                                    value={blogState.summary}
-                                    onChange={handleChange}
-                                />
-                            </ModalHeader>
-                            <ModalBody>
-                                <Tiptop onContentChange={handleChildContent} isEditable={true} content={blogState.content}/>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="danger" variant="light" onPress={onClose}>
-                                    Close
-                                </Button>
-                                <Button color="primary" onPress={onClose} onClick={() => add()}>
-                                    public
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
-        </div>
+        <>
+            <div className="flex flex-col gap-2">
+                <Button color="primary" endContent={<PlusIcon/>} onPress={onOpen}>
+                    Add New
+                </Button>
+                <Modal
+                    size="5xl"
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    scrollBehavior={"inside"}
+                    backdrop="blur"
+                >
+                    <ModalContent>
+                        {(onClose: any) => (
+                            <>
+                                <ModalHeader className="flex flex-row gap-1">
+                                    <Input
+                                        type="text"
+                                        variant={"underlined"}
+                                        placeholder="Enter Title"
+                                        name="title"
+                                        value={blogState.title}
+                                        onChange={handleChange}
+                                    />
+                                    <Input
+                                        type="text"
+                                        variant={"underlined"}
+                                        placeholder="Enter summary"
+                                        name="summary"
+                                        value={blogState.summary}
+                                        onChange={handleChange}
+                                    />
+                                </ModalHeader>
+                                <ModalBody>
+                                    <Tiptop onContentChange={handleChildContent} isEditable={true}
+                                            content={blogState.content}/>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="danger" variant="light" onPress={onClose}>
+                                        Close
+                                    </Button>
+                                    <Button color="primary" onPress={onClose} onClick={() => add()}>
+                                        public
+                                    </Button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
+            </div>
+        </>
     );
 }

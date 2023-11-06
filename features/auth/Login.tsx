@@ -6,7 +6,7 @@ import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {useAppDispatch} from '@/app/hooks/hooks'
 import {Button} from "@nextui-org/button";
 import {setCredentials} from "@/features/auth/authSlice";
-
+import {removeCredentials} from "@/features/auth/authSlice";
 import {
     Avatar,
     Checkbox, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger,
@@ -23,6 +23,7 @@ import {useAuth} from "@/hooks/useAuth";
 import {NavbarContent} from "@nextui-org/navbar";
 
 export const Login = () => {
+
     const {currentUser} = useAuth()
     const dispatch = useAppDispatch()
     // 定义用户名和密码
@@ -59,6 +60,11 @@ export const Login = () => {
             })
         }
     }
+
+    // 用户退出
+    const Logout = () => {
+        dispatch(removeCredentials())
+    }
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
         <>
@@ -87,7 +93,7 @@ export const Login = () => {
                             <DropdownItem key="system">System</DropdownItem>
                             <DropdownItem key="configurations">Configurations</DropdownItem>
                             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-                            <DropdownItem key="logout" color="danger" onClick={()=>alert("logout")}>
+                            <DropdownItem key="logout" color="danger" onClick={Logout}>
                                 Log Out
                             </DropdownItem>
                         </DropdownMenu>
@@ -165,6 +171,7 @@ export const Login = () => {
                                     color="primary"
                                     onPress={onClose}
                                     onClick={Login}
+                                    isLoading={isLoading}
                                 >
                                     Sign in
                                 </Button>

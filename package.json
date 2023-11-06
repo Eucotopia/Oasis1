@@ -27,6 +27,7 @@
     "@nextui-org/theme": "2.1.6",
     "@react-aria/ssr": "^3.7.1",
     "@react-aria/visually-hidden": "^3.8.3",
+    "@react-native-async-storage/async-storage": "^1.19.4",
     "@reduxjs/toolkit": "^1.9.7",
     "@tiptap-pro/extension-details": "^2.3.3",
     "@tiptap-pro/extension-details-content": "^2.2.4",
@@ -66,6 +67,7 @@
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "add": "^2.0.6",
     "autoprefixer": "10.4.15",
     "clsx": "^2.0.0",
     "eslint": "8.48.0",
@@ -87,7 +89,8 @@
     "tailwind-variants": "^0.1.13",
     "tailwindcss": "3.3.3",
     "tippy.js": "^6.3.7",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@tiptap/extension-document": "^2.1.12",

@@ -10,17 +10,17 @@ import {PostList} from "../../features/post/PostList";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function PostPage() {
-    // const page = {
-    //     page: 0,
-    //     size: 4
-    // }
-    // const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
-    // if (isError) {
-    //     return <Spinner/>
-    // }
-    // if (isLoading) {
-    //     return <Spinner/>
-    // }
+    const page = {
+        page: 0,
+        size: 4
+    }
+    const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
+    if (isError) {
+        return <Spinner/>
+    }
+    if (isLoading) {
+        return <Spinner/>
+    }
 
     return (
         <>
@@ -28,7 +28,7 @@ export default function PostPage() {
                 <Card
                     className="col-span-12 sm:col-span-4 h-[300px]"
                 >
-                    <Link href={`/post/1}`}>
+                    <Link href={`/post/1`}>
                         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                             <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
                             <h4 className="text-white font-medium text-large">Stream the Acme event</h4>

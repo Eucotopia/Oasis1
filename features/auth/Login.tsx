@@ -21,10 +21,9 @@ import {
 import {EyeFilledIcon, EyeSlashFilledIcon, MailIcon} from "@nextui-org/shared-icons";
 import {useAuth} from "@/hooks/useAuth";
 import {NavbarContent} from "@nextui-org/navbar";
-import {NULL} from "sass";
 
 export const Login = () => {
-    const {user} = useAuth()
+    const {currentUser} = useAuth()
     const dispatch = useAppDispatch()
     // 定义用户名和密码
     const [formState, setFormState] = useState<LoginRequest>({
@@ -63,7 +62,7 @@ export const Login = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
         <>
-            {user ? (
+            {currentUser ? (
                 <NavbarContent as="div" justify="end">
                     <Dropdown placement="bottom-end">
                         <DropdownTrigger>
@@ -80,7 +79,7 @@ export const Login = () => {
                         <DropdownMenu aria-label="Profile Actions" variant="flat">
                             <DropdownItem key="profile" className="h-14 gap-2">
                                 <p className="font-semibold">Signed in as</p>
-                                <p className="font-semibold">{user.nickname}</p>
+                                <p className="font-semibold">{currentUser.nickname}</p>
                             </DropdownItem>
                             <DropdownItem key="settings">My Settings</DropdownItem>
                             <DropdownItem key="team_settings">Team Settings</DropdownItem>

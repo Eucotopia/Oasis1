@@ -30,7 +30,6 @@ import {
 import {Logo} from "@/components/icons";
 import React from "react";
 import {Login} from "@/features/auth/Login";
-
 export const Navbar = () => {
     const searchInput = (
         <Input

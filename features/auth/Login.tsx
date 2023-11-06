@@ -95,7 +95,7 @@ export const Login = () => {
                     </Dropdown>
                 </NavbarContent>
             ) : (
-                <Button onPress={onOpen} color="primary">Login</Button>
+                <Button onPress={onOpen} variant={"flat"}>Login</Button>
             )}
             <Modal
                 isDismissable={false}

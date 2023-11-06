@@ -88,5 +88,10 @@
     "tailwindcss": "3.3.3",
     "tippy.js": "^6.3.7",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@tiptap/extension-document": "^2.1.12",
+    "@tiptap/extension-paragraph": "^2.1.12",
+    "@tiptap/extension-text": "^2.1.12"
   }
 }

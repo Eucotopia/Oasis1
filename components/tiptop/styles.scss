@@ -242,21 +242,12 @@
 }
 
 .editor {
-  background-color: white;
-  border: 3px solid #0d0d0d;
-  border-radius: 0.75rem;
-  color: #0d0d0d;
   display: flex;
   flex-direction: column;
-  // max-height: 26rem;
   height: 32rem;
 
   &__header {
     align-items: center;
-    background: #0d0d0d;
-    border-bottom: 3px solid #0d0d0d;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
     display: flex;
     flex: 0 0 auto;
     flex-wrap: wrap;

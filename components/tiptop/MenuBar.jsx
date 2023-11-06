@@ -3,6 +3,8 @@ import {Fragment} from "react"
 import './MenuBar.scss'
 import MenuItem from './MenuItem'
 import './MenuItem.scss'
+import {Link} from "@nextui-org/link";
+import {Button} from "@nextui-org/react";
 
 export default ({editor}) => {
     const items = [
@@ -150,7 +152,8 @@ export default ({editor}) => {
                     </Fragment>
                 ))
             }
-            <button
+            <Link
+                color={"foreground"}
                 title='backgroundColor'
                 className={`menu-item ${editor.isActive('highlight', {color: editor.getAttributes('highlight').color}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -161,8 +164,9 @@ export default ({editor}) => {
                 }}
             >
                 <FontAwesomeIcon icon="fa-solid fa-highlighter"/>
-            </button>
-            <button
+            </Link>
+            <Link
+                color={"foreground"}
                 title='textcolor'
                 className={`menu-item ${editor.isActive('textStyle', {color: editor.getAttributes('textStyle').color}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -173,8 +177,9 @@ export default ({editor}) => {
                 }}
             >
                 <FontAwesomeIcon icon=" fa-solid fa-fill-drip"/>
-            </button>
-            <button
+            </Link>
+            <Link
+                color={"foreground"}
                 title='image'
                 className={`menu-item ${editor.isActive('image', {src: editor.getAttributes('image').src}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -186,8 +191,9 @@ export default ({editor}) => {
                 }
             >
                 <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
-            </button>
-            <button
+            </Link>
+            <Link
+                color={"foreground"}
                 title='youtube'
                 className={`menu-item ${editor.isActive('youtube', {src: editor.getAttributes('youtube').src}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -203,9 +209,10 @@ export default ({editor}) => {
                 }
             >
                 <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
-            </button>
+            </Link>
 
-            <button
+            <Link
+                color={"foreground"}
                 title='link'
                 className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -228,14 +235,15 @@ export default ({editor}) => {
                 }
             >
                 <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
-            </button>
-            <button
+            </Link>
+            <Link
+                color={"foreground"}
                 className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
                 onClick={() => editor.chain().focus().unsetLink().run()}
                 disabled={!editor.isActive('link')}
             >
                 <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
-            </button>
+            </Link>
         </div>
     )
 }

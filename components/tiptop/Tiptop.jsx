@@ -5,6 +5,9 @@ import {Color} from '@tiptap/extension-color'
 import FontFamily from '@tiptap/extension-font-family'
 import Heading from '@tiptap/extension-heading'
 import Highlight from '@tiptap/extension-highlight'
+import Document from '@tiptap/extension-document'
+import Paragraph from '@tiptap/extension-paragraph'
+import Text from '@tiptap/extension-text'
 import 'katex/dist/katex.min.css'
 import Link from '@tiptap/extension-link'
 import Table from '@tiptap/extension-table'
@@ -20,7 +23,6 @@ import TaskList from '@tiptap/extension-task-list'
 import TextAlign from '@tiptap/extension-text-align'
 import TextStyle from '@tiptap/extension-text-style'
 import {EditorContent, useEditor} from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
 import css from 'highlight.js/lib/languages/css'
 import java from 'highlight.js/lib/languages/java'
 import swift from 'highlight.js/lib/languages/swift'
@@ -43,40 +45,7 @@ import {Dropcursor} from "@tiptap/extension-dropcursor";
 import {FileHandler} from "@tiptap-pro/extension-file-handler";
 import {Mathematics} from "@tiptap-pro/extension-mathematics";
 import {Typography} from "@tiptap/extension-typography";
-import {CheckIcon} from "../model/CheckIcon"
-import {Chip, tv, useCheckbox, VisuallyHidden} from "@nextui-org/react";
-const checkbox = tv({
-    slots: {
-        base: "border-default hover:bg-default-200",
-        content: "text-default-500"
-    },
-    variants: {
-        isSelected: {
-            true: {
-                base: "border-primary bg-primary hover:bg-primary-500 hover:border-primary-500",
-                content: "text-primary-foreground pl-1"
-            }
-        },
-        isFocusVisible: {
-            true: {
-                base: "outline-none ring-2 ring-focus ring-offset-2 ring-offset-background",
-            }
-        }
-    }
-})
 export default (props) => {
-    const {
-        children,
-        isSelected,
-        isFocusVisible,
-        getBaseProps,
-        getLabelProps,
-        getInputProps,
-    } = useCheckbox({
-        defaultSelected: true,
-    })
-    const styles = checkbox({isSelected, isFocusVisible})
-
     const editor = useEditor({
         extensions: [
             CodeBlockLowlight.configure({
@@ -102,8 +71,9 @@ export default (props) => {
             TextStyle,
             Color,
             Superscript,
-            StarterKit,
             Highlight,
+            Text,
+            Document,
             TaskList,
             FontFamily,
             Image,
@@ -128,6 +98,7 @@ export default (props) => {
                 suggestion: MentionSuggestion,
             }),
             History,
+            Paragraph,
             Mathematics,
             ReactComponent,
             TextAlign.configure({
@@ -207,23 +178,6 @@ export default (props) => {
     }
     return (
         <>
-            <label {...getBaseProps()}>
-                <VisuallyHidden>
-                    <input {...getInputProps()} />
-                </VisuallyHidden>
-                <Chip
-                    classNames={{
-                        base: styles.base(),
-                        content: styles.content(),
-                    }}
-                    color="primary"
-                    startContent={isSelected ? <CheckIcon className="ml-1" /> : null}
-                    variant="faded"
-                    {...getLabelProps()}
-                >
-                    {children ? children : isSelected ? "置顶" : "不置顶"}
-                </Chip>
-            </label>
             <div className="editor">
                 {/*{editor && <Bubble editor={editor}/>}*/}
                 {editor && <MenuBar editor={editor}/>}

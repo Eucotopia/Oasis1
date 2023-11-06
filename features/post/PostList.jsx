@@ -1,6 +1,7 @@
 import {Link} from "@nextui-org/link";
 import {Card, CardHeader, Image} from "@nextui-org/react";
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const PostList = (props) => {
     return (

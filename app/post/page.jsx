@@ -7,19 +7,20 @@ import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org
 import {Link} from "@nextui-org/link";
 import NextLink from "next/link";
 import {PostList} from "../../features/post/PostList";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function PostPage() {
-    const page = {
-        page: 0,
-        size: 4
-    }
-    const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
-    if (isError) {
-        return <Spinner/>
-    }
-    if (isLoading) {
-        return <Spinner/>
-    }
+    // const page = {
+    //     page: 0,
+    //     size: 4
+    // }
+    // const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
+    // if (isError) {
+    //     return <Spinner/>
+    // }
+    // if (isLoading) {
+    //     return <Spinner/>
+    // }
 
     return (
         <>

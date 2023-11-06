@@ -49,7 +49,7 @@ export default function AddArticle() {
     return (
         <>
             <div className="flex flex-col gap-2">
-                <Button color="primary" endContent={<PlusIcon/>} onPress={onOpen}>
+                <Button variant={"flat"} endContent={<PlusIcon/>} onPress={onOpen}>
                     Add New
                 </Button>
                 <Modal
@@ -64,22 +64,23 @@ export default function AddArticle() {
                         {(onClose: any) => (
                             <>
                                 <ModalHeader className="flex flex-row gap-1">
-                                    <Input
-                                        type="text"
-                                        variant={"underlined"}
-                                        placeholder="Enter Title"
-                                        name="title"
-                                        value={blogState.title}
-                                        onChange={handleChange}
-                                    />
-                                    <Input
-                                        type="text"
-                                        variant={"underlined"}
-                                        placeholder="Enter summary"
-                                        name="summary"
-                                        value={blogState.summary}
-                                        onChange={handleChange}
-                                    />
+                                    请肆意发挥你的灵感
+                                    {/*<Input*/}
+                                    {/*    type="text"*/}
+                                    {/*    variant={"underlined"}*/}
+                                    {/*    placeholder="Enter Title"*/}
+                                    {/*    name="title"*/}
+                                    {/*    value={blogState.title}*/}
+                                    {/*    onChange={handleChange}*/}
+                                    {/*/>*/}
+                                    {/*<Input*/}
+                                    {/*    type="text"*/}
+                                    {/*    variant={"underlined"}*/}
+                                    {/*    placeholder="Enter summary"*/}
+                                    {/*    name="summary"*/}
+                                    {/*    value={blogState.summary}*/}
+                                    {/*    onChange={handleChange}*/}
+                                    {/*/>*/}
                                 </ModalHeader>
                                 <ModalBody>
                                     <Tiptop onContentChange={handleChildContent} isEditable={true}

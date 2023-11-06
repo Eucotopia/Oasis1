@@ -58,6 +58,7 @@ export default function AddArticle() {
                     onOpenChange={onOpenChange}
                     scrollBehavior={"inside"}
                     backdrop="blur"
+                    isDismissable={false}
                 >
                     <ModalContent>
                         {(onClose: any) => (

@@ -4,7 +4,6 @@ import './MenuBar.scss'
 import MenuItem from './MenuItem'
 import './MenuItem.scss'
 import {Link} from "@nextui-org/link";
-import {Button} from "@nextui-org/react";
 
 export default ({editor}) => {
     const items = [
@@ -163,7 +162,7 @@ export default ({editor}) => {
                     }
                 }}
             >
-                <FontAwesomeIcon icon="fa-solid fa-highlighter"/>
+                <FontAwesomeIcon icon="fa-solid fa-palette"/>
             </Link>
             <Link
                 color={"foreground"}
@@ -176,7 +175,7 @@ export default ({editor}) => {
                     }
                 }}
             >
-                <FontAwesomeIcon icon=" fa-solid fa-fill-drip"/>
+                <FontAwesomeIcon icon="fa-solid fa-paintbrush"/>
             </Link>
             <Link
                 color={"foreground"}
@@ -193,7 +192,6 @@ export default ({editor}) => {
                 <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
             </Link>
             <Link
-                color={"foreground"}
                 title='youtube'
                 className={`menu-item ${editor.isActive('youtube', {src: editor.getAttributes('youtube').src}) ? 'is-active' : ''}`}
                 onClick={() => {
@@ -208,7 +206,7 @@ export default ({editor}) => {
                 }
                 }
             >
-                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass"/>
             </Link>
 
             <Link
@@ -217,33 +215,28 @@ export default ({editor}) => {
                 className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
                 onClick={() => {
                     const previousUrl = editor.getAttributes('link').href
-                    const url = window.prompt('URL', previousUrl)
-                    // cancelled
-                    if (url === null) {
-                        return
-                    }
-                    // empty
-                    if (url === '') {
+                    if (previousUrl === undefined) {
+                        const url = window.prompt('URL', previousUrl)
+                        // cancelled
+                        if (url === null) {
+                            return
+                        }
+                        if (url === '') {
+                            return
+                        }
+                        // update link
+                        editor.chain().focus().extendMarkRange('link').setLink({href: url})
+                            .run()
+                    } else {
                         editor.chain().focus().extendMarkRange('link').unsetLink()
                             .run()
-                        return
                     }
-                    // update link
-                    editor.chain().focus().extendMarkRange('link').setLink({href: url})
-                        .run()
                 }
                 }
             >
-                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
+                <FontAwesomeIcon icon="fa-solid fa-link"/>
             </Link>
-            <Link
-                color={"foreground"}
-                className={`menu-item ${editor.isActive('link', {href: editor.getAttributes('link').href}) ? 'is-active' : ''}`}
-                onClick={() => editor.chain().focus().unsetLink().run()}
-                disabled={!editor.isActive('link')}
-            >
-                <FontAwesomeIcon icon="fa-solid fa-fill-drip"/>
-            </Link>
+
         </div>
     )
 }

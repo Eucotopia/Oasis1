@@ -1,13 +1,10 @@
 "use client"
 import {useGetBlogQuery} from "@/app/api/postApi";
 import {Spinner} from "@nextui-org/react";
-import {Page} from '@/app/api/postApi'
 import React from "react";
-import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
-import {Link} from "@nextui-org/link";
-import NextLink from "next/link";
-import {PostList} from "../../features/post/PostList";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {PostList} from "@/features/post/PostList";
+import {setPosts} from "@/features/post/postSlice";
+import {useAppDispatch} from "@/hooks/store";
 
 export default function PostPage() {
     const page = {
@@ -15,7 +12,11 @@ export default function PostPage() {
         size: 8
     }
     const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
-
+    const dispatch = useAppDispatch()
+    if (posts!==undefined){
+        dispatch(setPosts(posts))
+    }
+    // console.log(posts?.data)
     if (isError) {
         return <Spinner/>
     }

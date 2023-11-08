@@ -27,6 +27,7 @@
     border-radius: 0.25rem;
     display: inline-block;
   }
+
   table {
     border-collapse: collapse;
     margin: 0;
@@ -80,6 +81,7 @@
       margin: 0;
     }
   }
+
   a {
     color: #68cef8;
   }
@@ -213,6 +215,7 @@
   img {
     height: auto;
     max-width: 100%;
+
     &.ProseMirror-selectednode {
       outline: 3px solid #68cef8;
     }
@@ -228,6 +231,7 @@
     border-top: 2px solid rgba(#0d0d0d, 0.1);
     margin: 2rem 0;
   }
+
   ol li {
     list-style: decimal;
     margin-left: 1rem;
@@ -353,12 +357,14 @@
     padding-left: calc(1rem * (var(--level) - 1));
   }
 }
+
 .mention {
   border: 1px solid #000;
   border-radius: 0.4rem;
   box-decoration-break: clone;
   padding: 0.1rem 0.3rem;
 }
+
 ul[data-type="taskList"] {
   list-style: none;
   padding: 0;
@@ -390,6 +396,7 @@ ul[data-type="taskList"] {
     }
   }
 }
+
 .tiptap p.is-editor-empty:first-child::before {
   color: #adb5bd;
   content: attr(data-placeholder);
@@ -397,3 +404,8 @@ ul[data-type="taskList"] {
   height: 0;
   pointer-events: none;
 }
+// 去除边框
+.tiptap:focus {
+  outline: none;
+}
+

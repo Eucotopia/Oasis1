@@ -132,7 +132,6 @@ export default (props) => {
                             console.log(htmlContent) // eslint-disable-line no-console
                             return false
                         }
-
                         const fileReader = new FileReader()
 
                         fileReader.readAsDataURL(file)

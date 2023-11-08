@@ -3,7 +3,6 @@ import {LoginRequest} from "@/types";
 import {useLoginMutation} from "@/app/api/authApi";
 import {Input} from "@nextui-org/input";
 import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
-import {useAppDispatch} from '@/app/hooks/hooks'
 import {Button} from "@nextui-org/button";
 import {setCredentials} from "@/features/auth/authSlice";
 import {removeCredentials} from "@/features/auth/authSlice";
@@ -21,6 +20,7 @@ import {
 import {EyeFilledIcon, EyeSlashFilledIcon, MailIcon} from "@nextui-org/shared-icons";
 import {useAuth} from "@/hooks/useAuth";
 import {NavbarContent} from "@nextui-org/navbar";
+import {useAppDispatch} from "@/hooks/store";
 
 export const Login = () => {
 

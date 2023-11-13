@@ -12,11 +12,13 @@ import {
     Input
 } from "@nextui-org/react";
 import {useAddBlogMutation} from "@/app/api/postApi";
-import {Post, PostDTO} from "@/types";
+import {Post, PostDTO, ResultResponse} from "@/types";
+import {useDispatch} from "react-redux";
 
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const dispatch = useDispatch()
 
     const handleChildContent = (html: string) => {
         setBlogState((pre) => ({
@@ -41,8 +43,11 @@ export default function AddArticle() {
     )
 
     const add = async () => {
+        // let result  = await addBlog(blogState) as unknown as ResultResponse<string>;
         const blog = await addBlog(blogState).unwrap()
-        console.log(blog)
+        if (blog.code === "200") {
+        }
+
     }
 
 

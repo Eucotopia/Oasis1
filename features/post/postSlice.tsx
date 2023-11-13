@@ -16,7 +16,7 @@ const postSlice = createSlice({
         ) => {
             console.log(data)
             state.posts = data
-        },
+        }
     }
 })
 export const {setPosts} = postSlice.actions

@@ -156,6 +156,10 @@ export default ({editor}) => {
                 title='backgroundColor'
                 className={`menu-item ${editor.isActive('highlight', {color: editor.getAttributes('highlight').color}) ? 'is-active' : ''}`}
                 onClick={() => {
+                    if (editor.isActive('highlight', {color: editor.getAttributes('highlight').color})) {
+                        editor.chain().focus().unsetHighlight().run();
+                        return;
+                    }
                     const color = prompt('Please enter a background color:');
                     if (color) {
                         editor.chain().focus().toggleHighlight({color}).run();
@@ -169,6 +173,10 @@ export default ({editor}) => {
                 title='textcolor'
                 className={`menu-item ${editor.isActive('textStyle', {color: editor.getAttributes('textStyle').color}) ? 'is-active' : ''}`}
                 onClick={() => {
+                    if (editor.isActive('textStyle', {color: editor.getAttributes('textStyle').color})) {
+                        editor.chain().focus().unsetColor().run()
+                        return;
+                    }
                     const color = prompt('Please enter a text color:');
                     if (color) {
                         editor.chain().focus().setColor(color).run()
@@ -216,14 +224,12 @@ export default ({editor}) => {
                 onClick={() => {
                     const previousUrl = editor.getAttributes('link').href
                     if (previousUrl === undefined) {
+                        if (editor.isActive('link')) {
+                            editor.chain().focus().extendMarkRange('link').unsetLink()
+                                .run()
+                            return
+                        }
                         const url = window.prompt('URL', previousUrl)
-                        // cancelled
-                        if (url === null) {
-                            return
-                        }
-                        if (url === '') {
-                            return
-                        }
                         // update link
                         editor.chain().focus().extendMarkRange('link').setLink({href: url})
                             .run()

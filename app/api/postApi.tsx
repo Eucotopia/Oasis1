@@ -4,8 +4,8 @@ import {RootState} from "@/app/store";
 
 
 export interface Page {
-    page:number,
-    size:number
+    page: number,
+    size: number
 }
 
 export const postApi = createApi({
@@ -23,11 +23,15 @@ export const postApi = createApi({
         },
     }),
     endpoints: builder => ({
-        getBlog: builder.query<ResultResponse<Post[]>,Page>({
-            query: (page:Page) => `/post/${page.page}/${page.size}`,
+        getBlog: builder.query<ResultResponse<Post[]>, Page>({
+            query: (page: Page) => `/post/${page.page}/${page.size}`,
         }),
-        getBlogById: builder.query<ResultResponse<Post>,number>({
+        getBlogById: builder.query<ResultResponse<Post>, number>({
             query: (id: number) => `/post/${id}`
+        }),
+        // 获取博客总数
+        getPostCount: builder.query<ResultResponse<number>, void>({
+            query: () => `/post/count`
         }),
         addBlog: builder.mutation<ResultResponse<string>, PostDTO>({
             query: (post) => ({
@@ -39,4 +43,4 @@ export const postApi = createApi({
     }),
 })
 
-export const {useGetBlogQuery, useGetBlogByIdQuery,useAddBlogMutation} = postApi
+export const {useGetBlogQuery, useGetBlogByIdQuery, useAddBlogMutation, useGetPostCountQuery} = postApi

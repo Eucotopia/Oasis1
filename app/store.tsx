@@ -25,14 +25,11 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-    // reducer: {
-    //     [postApi.reducerPath]: postApi.reducer,
-    //     [authApi.reducerPath]: authApi.reducer,
-    //     auth: authReducer,
-    // },
     reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== 'production',
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(postApi.middleware).concat(authApi.middleware).concat(thunk)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    }).concat(postApi.middleware).concat(authApi.middleware).concat(thunk)
 })
 
 export const persistor = persistStore(store)

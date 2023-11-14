@@ -45,6 +45,7 @@ import {Dropcursor} from "@tiptap/extension-dropcursor";
 import {FileHandler} from "@tiptap-pro/extension-file-handler";
 import {Mathematics} from "@tiptap-pro/extension-mathematics";
 import {Typography} from "@tiptap/extension-typography";
+import {StarterKit} from "@tiptap/starter-kit";
 
 export default (props) => {
     const editor = useEditor({
@@ -72,6 +73,7 @@ export default (props) => {
             TextStyle,
             Color,
             Superscript,
+            StarterKit,
             Highlight,
             Text,
             Document,

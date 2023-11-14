@@ -45,6 +45,7 @@ import {Dropcursor} from "@tiptap/extension-dropcursor";
 import {FileHandler} from "@tiptap-pro/extension-file-handler";
 import {Mathematics} from "@tiptap-pro/extension-mathematics";
 import {Typography} from "@tiptap/extension-typography";
+
 export default (props) => {
     const editor = useEditor({
         extensions: [
@@ -165,7 +166,7 @@ export default (props) => {
         })
     }, [editor])
 
-    if (props.isEditable === false){
+    if (props.isEditable === false) {
         return (
             <>
                 <div>
@@ -182,7 +183,6 @@ export default (props) => {
                 {editor && <MenuBar editor={editor}/>}
                 <EditorContent className="editor__content" editor={editor}/>
             </div>
-
         </>
     )
 }

@@ -10,7 +10,6 @@ export default function PostList(props) {
 
     return (
         <NextLink href={`/post/${props.blog.id}`}>
-
             <Card
                 isBlurred
                 isHoverable

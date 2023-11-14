@@ -13,7 +13,7 @@ const persistConfig = {
     key: "root",
     storage: storage,
     // 如果不想将部分state持久化，可以将其放入黑名单(blacklist)中.黑名单是设置
-    blacklist: ['']
+    blacklist: ['post']
 }
 const rootReducer = combineReducers({
     auth: authReducer,

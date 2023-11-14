@@ -9,7 +9,7 @@ import PostList from "@/components/Music/PostList";
 export default function PostPage() {
     const page = {
         page: 0,
-        size: 8
+        size: 21
     }
     const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(page)
     const dispatch = useAppDispatch()

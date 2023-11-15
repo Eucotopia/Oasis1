@@ -10,6 +10,7 @@ export interface Page {
 
 export const postApi = createApi({
     reducerPath: 'postApi',
+    tagTypes: ['Post'],
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080',
         prepareHeaders: (headers, {getState}) => {
@@ -25,20 +26,24 @@ export const postApi = createApi({
     endpoints: builder => ({
         getBlog: builder.query<ResultResponse<Post[]>, Page>({
             query: (page: Page) => `/post/${page.page}/${page.size}`,
+            providesTags: ['Post']
         }),
         getBlogById: builder.query<ResultResponse<Post>, number>({
-            query: (id: number) => `/post/${id}`
+            query: (id: number) => `/post/${id}`,
+            providesTags: ['Post']
         }),
         // 获取博客总数
         getPostCount: builder.query<ResultResponse<number>, void>({
-            query: () => `/post/count`
+            query: () => `/post/count`,
+            providesTags: ['Post']
         }),
         addBlog: builder.mutation<ResultResponse<string>, PostDTO>({
             query: (post) => ({
                 url: '/post',
                 method: 'POST',
                 body: post,
-            })
+            }),
+            invalidatesTags: ['Post'],
         }),
     }),
 })

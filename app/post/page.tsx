@@ -1,25 +1,21 @@
 "use client"
 import {useGetBlogQuery, useGetPostCountQuery} from "@/app/api/postApi";
 import {Pagination, Spinner} from "@nextui-org/react";
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 import PostList from "@/components/music/PostList";
 import {Button} from "@nextui-org/button";
 
 export default function PostPage() {
     // 获取博客总数
     const {data: postTotal} = useGetPostCountQuery()
+    console.log("postTotal:" + postTotal?.data)
     const [page, setPage] = React.useState(1);
     const rowsPerPage = 5
     const pageNumbers = {
         page: page - 1,
         size: rowsPerPage
     };
-    console.log(pageNumbers)
-
-    console.log(pageNumbers)
-
-    const {data: posts, isLoading, isFetching, isError} = useGetBlogQuery(pageNumbers)
-
+    const {data: posts, isLoading, isFetching, isError,refetch} = useGetBlogQuery(pageNumbers)
     const pages = useMemo(() => {
         return postTotal?.data ? Math.ceil(postTotal?.data / rowsPerPage) : 0;
     }, [posts?.data.length, rowsPerPage])
@@ -36,6 +32,7 @@ export default function PostPage() {
                 <div className="inline-block max-w-4xl text-center justify-center">
                     {
                         posts?.data.map((post) => {
+                            console.log(post)
                             return (
                                 <PostList blog={post}/>
                             )
@@ -48,6 +45,8 @@ export default function PostPage() {
                         variant="flat"
                         color="secondary"
                         onPress={() => setPage((page) => (page > 1 ? page - 1 : page))}
+                        // 清除缓存
+                        onClick={()=>{refetch()}}
                     >
                         Previous
                     </Button>
@@ -56,6 +55,8 @@ export default function PostPage() {
                         variant="flat"
                         color="secondary"
                         onPress={() => setPage((page) => (page < pages ? page + 1 : page))}
+                        // 清除缓存
+                        onClick={()=>{refetch()}}
                     >
                         Next
                     </Button>

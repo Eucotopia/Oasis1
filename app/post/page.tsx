@@ -3,6 +3,7 @@ import {useGetBlogQuery, useGetPostCountQuery} from "@/app/api/postApi";
 import {Pagination, Spinner} from "@nextui-org/react";
 import React, {useMemo} from "react";
 import PostList from "@/components/music/PostList";
+import {Button} from "@nextui-org/button";
 
 export default function PostPage() {
     // 获取博客总数
@@ -10,7 +11,7 @@ export default function PostPage() {
     const [page, setPage] = React.useState(1);
     const rowsPerPage = 5
     const pageNumbers = {
-        page: page-1,
+        page: page - 1,
         size: rowsPerPage
     };
     console.log(pageNumbers)
@@ -40,17 +41,27 @@ export default function PostPage() {
                             )
                         })
                     }
-                    <Pagination
-                        isCompact
-                        showControls
-                        showShadow
-                        color="primary"
-                        page={page}
-                        total={pages}
-                        onChange={(page) => setPage(page)}
-                    />
+                </div>
+                <div className="flex flex-row gap-5 justify-between">
+                    <Button
+                        size="sm"
+                        variant="flat"
+                        color="secondary"
+                        onPress={() => setPage((page) => (page > 1 ? page - 1 : page))}
+                    >
+                        Previous
+                    </Button>
+                    <Button
+                        size="sm"
+                        variant="flat"
+                        color="secondary"
+                        onPress={() => setPage((page) => (page < pages ? page + 1 : page))}
+                    >
+                        Next
+                    </Button>
                 </div>
             </section>
+
         </>
     );
 }

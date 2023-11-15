@@ -13,7 +13,7 @@ export default function PostList(props) {
             <Card
                 isBlurred
                 isHoverable
-                className="border-none bg-background/60 dark:bg-default-100/50 w-[710px]"
+                className="border-none bg-background/60 dark:bg-default-100/50 w-[710px] mb-4"
                 shadow="sm"
             >
                 <CardBody>

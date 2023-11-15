@@ -15,7 +15,13 @@ export default function PostPage() {
         page: page - 1,
         size: rowsPerPage
     };
-    const {data: posts, isLoading, isFetching, isError,refetch} = useGetBlogQuery(pageNumbers)
+    const {data: posts, isLoading, isFetching, isError,refetch} = useGetBlogQuery(pageNumbers,{
+        // 每 3s 轮询，实现实时数据更新的效果
+        pollingInterval: 3000,
+        // 用于控制查询的自动触发行为
+        refetchOnMountOrArgChange: true,
+        skip: false,
+    })
     const pages = useMemo(() => {
         return postTotal?.data ? Math.ceil(postTotal?.data / rowsPerPage) : 0;
     }, [posts?.data.length, rowsPerPage])

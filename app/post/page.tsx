@@ -1,6 +1,5 @@
 "use client"
 import {useGetBlogQuery, useGetPostCountQuery} from "@/app/api/postApi";
-import {Pagination, Spinner} from "@nextui-org/react";
 import React, {useEffect, useMemo} from "react";
 import PostList from "@/components/music/PostList";
 import {Button} from "@nextui-org/button";
@@ -8,7 +7,6 @@ import {Button} from "@nextui-org/button";
 export default function PostPage() {
     // 获取博客总数
     const {data: postTotal} = useGetPostCountQuery()
-    console.log("postTotal:" + postTotal?.data)
     const [page, setPage] = React.useState(1);
     const rowsPerPage = 5
     const pageNumbers = {

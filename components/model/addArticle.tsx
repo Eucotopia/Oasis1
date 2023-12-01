@@ -18,22 +18,17 @@ import {useDispatch} from "react-redux";
 
 export default function AddArticle() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    const dispatch = useDispatch()
-
     const handleChildContent = (html: string) => {
         setBlogState((pre) => ({
             ...pre,
             content: html
         }))
     }
-
     const handleChange = ({target: {name, value}}: ChangeEvent<HTMLInputElement>) => setBlogState((prev) => ({
         ...prev,
         [name]: value
     }))
-
     const [addBlog, isLoading] = useAddBlogMutation()
-
     const [blogState, setBlogState] = useState<PostDTO>({
             title: "",
             content: "这是一个博客内容",
@@ -41,16 +36,12 @@ export default function AddArticle() {
             isTop: 1,
         }
     )
-
     const add = async () => {
-        // let result  = await addBlog(blogState) as unknown as ResultResponse<string>;
         const blog = await addBlog(blogState).unwrap()
         if (blog.code === "200") {
         }
 
     }
-
-
     return (
         <>
             <div className="flex flex-col gap-2">

@@ -2,6 +2,7 @@
   > * + * {
     margin-top: 0.75em;
   }
+
   .Tiptap-mathematics-editor {
     background: #202020;
     color: #fff;
@@ -95,12 +96,33 @@
   }
 
   h1 {
+    display: inline-block;
     font-size: 2em;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
     font-weight: bold;
+    position: relative;
+  }
+
+  h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    /* 设置过渡效果，使宽度变化平滑 */
+    transition: width 0.5s ease-in-out;
+    /* 添加阴影效果 */
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  h1:hover::after {
+    /* 设置鼠标悬停时的宽度为 100% */
+    width: 100%;
   }
 
   h2 {
@@ -222,9 +244,17 @@
   }
 
   blockquote {
-    border-left: 5px solid rgba(#0d0d0d, 0.1);
-    padding-left: 0.5rem;
+    padding: 0.75rem 1rem;
+    background-color: rgba(#0d0d0d, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
   }
+
+  blockquote:before {
+    content: "👻";
+    margin-right: 0.5rem;
+  }
+
 
   hr {
     border: none;
@@ -404,6 +434,7 @@ ul[data-type="taskList"] {
   height: 0;
   pointer-events: none;
 }
+
 // 去除边框
 .tiptap:focus {
   outline: none;

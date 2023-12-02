@@ -12,7 +12,7 @@ export default function PostList(props) {
 
     const {data: res} = useIsLikedQuery(props.blog.id)
 
-    const [likeBlog] = useLikeBlogQuery()
+    // const [likeBlog] = useLikeBlogQuery()
 
     useEffect(() => {
         console.log(res)
@@ -45,7 +45,7 @@ export default function PostList(props) {
                                     className="object-cover"
                                     height={100}
                                     shadow="md"
-                                    src="https://nextui.org/images/album-cover.png"
+                                    src={props.blog.cover}
                                     width="100%"
                                 />
                             </NextLink>

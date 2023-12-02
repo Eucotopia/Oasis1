@@ -2,7 +2,6 @@
 import {useGetBlogByIdQuery} from "@/app/api/postApi";
 import React from "react";
 import Tiptop from "@/components/tiptop/Tiptop";
-import {useAppSelector} from "@/hooks/store";
 
 export const PostDetail = ({id}: { id: number }) => {
     const {

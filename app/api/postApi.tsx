@@ -26,16 +26,16 @@ export const postApi = createApi({
         endpoints: builder => ({
             getBlog: builder.query<ResultResponse<Post[]>, Page>({
                 query: (page: Page) => `/post/${page.page}/${page.size}`,
-                providesTags: ['Post']
+                // providesTags: ['Post']
             }),
             getBlogById: builder.query<ResultResponse<Post>, number>({
                 query: (id: number) => `/post/${id}`,
-                providesTags: ['Post']
+                // providesTags: ['Post']
             }),
             // 获取博客总数
             getPostCount: builder.query<ResultResponse<number>, void>({
                 query: () => `/post/count`,
-                providesTags: ['Post']
+                // providesTags: ['Post']
             }),
             addBlog: builder.mutation<ResultResponse<string>, PostDTO>({
                 query: (post) => ({
@@ -43,7 +43,7 @@ export const postApi = createApi({
                     method: 'POST',
                     body: post,
                 }),
-                invalidatesTags: ['Post'],
+                // invalidatesTags: ['Post'],
             }),
             likeBlog: builder.query<ResultResponse<string>, number>({
                 query: (id) => `/post/like/${id}`,

@@ -28,7 +28,8 @@ export type Post = {
     userId: number,
     likes: number,
     views: number,
-    comments: number
+    comments: number,
+    cover: string
 }
 export type PostDTO = {
     title: string,

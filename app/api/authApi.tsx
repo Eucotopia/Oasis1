@@ -8,6 +8,7 @@ export interface UserV0 {
     nickname: string
     username: string
     token: string
+    image: string
 }
 
 export interface User {

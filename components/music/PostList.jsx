@@ -10,20 +10,20 @@ import {useIsLikedQuery, useLikeBlogQuery} from "@/app/api/postApi";
 export default function PostList(props) {
     const [liked, setLiked] = React.useState(false);
 
-    const {data: res} = useIsLikedQuery(props.blog.id)
+    // const {data: res} = useIsLikedQuery(props.blog.id)
 
     // const [likeBlog] = useLikeBlogQuery()
 
-    useEffect(() => {
-        console.log(res)
-        if (res) {
-            console.log(props.blog.id + ":" + res.data)
-            setLiked(res.data)
-        }
-    }, [liked, res])
+    // useEffect(() => {
+    //     console.log(res)
+    //     if (res) {
+    //         console.log(props.blog.id + ":" + res.data)
+    //         setLiked(res.data)
+    //     }
+    // }, [liked, res])
 
     const likeButton = () => {
-        likeBlog(props.blog.id)
+        // likeBlog(props.blog.id)
     }
 
     return (
@@ -43,7 +43,7 @@ export default function PostList(props) {
                                     isZoomed
                                     alt="Post cover"
                                     className="object-cover"
-                                    height={100}
+                                    height="100%"
                                     shadow="md"
                                     src={props.blog.cover}
                                     width="100%"

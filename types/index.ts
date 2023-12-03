@@ -36,6 +36,7 @@ export type PostDTO = {
     content: string,
     summary: string,
     isTop: number,
+    cover: string
 }
 
 export interface ResultResponse<T> {

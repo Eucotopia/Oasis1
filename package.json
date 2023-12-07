@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@better-scroll/core": "^2.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
